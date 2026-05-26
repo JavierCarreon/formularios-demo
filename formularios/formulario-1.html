@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 1 - Registro de usuario</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="topbar">
+            <div class="logo-placeholder">
+                <img src="../assets/images/conmigo_vales_logo1.png" alt="Conmigo Vales">
+            </div>
+            <div class="header-actions">
+                <span class="nav-link">Iniciar sesión</span>
+                <button type="button" class="nav-button">Regístrate</button>
+            </div>
+            <button type="button" class="menu-toggle" aria-label="Menu principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="page-main">
+        <div class="form-header">
+            <h1>Regístrate</h1>
+            <p class="subtitle">Crea tu cuenta y solicita el producto que más se ajuste a tus necesidades</p>
+            <p class="practice-legend subtle">Ambiente de práctica · La información no se almacena ni se envía a sistemas productivos.</p>
+        </div>
+
+        <form id="registration-form" class="registration-form">
+            <div class="practice-section">
+                <h3 class="section-title">Datos de práctica</h3>
+                <div class="practice-grid">
+                    <div class="form-group">
+                        <label for="practitioner-name">Nombre del colaborador en capacitación<span class="required">*</span></label>
+                        <input type="text" id="practitioner-name" name="practitioner-name" placeholder="Nombre del colaborador en capacitación">
+                    </div>
+                    <div class="form-group">
+                        <label for="practice-branch">Sucursal<span class="required">*</span></label>
+                        <input type="text" id="practice-branch" name="practice-branch" placeholder="Sucursal">
+                    </div>
+                    <div class="form-group">
+                        <label for="practice-id">ID<span class="required">*</span></label>
+                        <input type="text" id="practice-id" name="practice-id" inputmode="numeric" maxlength="6" pattern="[0-9]*" autocomplete="off" placeholder="ID">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">Primer nombre<span class="required">*</span></label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Primer nombre">
+                </div>
+                <div class="form-group">
+                    <label for="second-name">Segundo nombre</label>
+                    <input type="text" id="second-name" name="second-name" placeholder="Segundo nombre">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="last-name-paternal">Apellido paterno<span class="required">*</span></label>
+                    <input type="text" id="last-name-paternal" name="last-name-paternal" placeholder="Apellido paterno">
+                </div>
+                <div class="form-group">
+                    <label for="last-name-maternal">Apellido materno<span class="required">*</span></label>
+                    <input type="text" id="last-name-maternal" name="last-name-maternal" placeholder="Apellido materno">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Celular<span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="Celular">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico<span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="reference">¿Cómo se enteró de Conmigo vales?<span class="required">*</span></label>
+                    <select id="reference" name="reference">
+                        <option value="">Seleccione una opción</option>
+                        <option value="radio-tv">Radio/TV</option>
+                        <option value="social-media">Redes Sociales</option>
+                        <option value="street-ad">Publicidad en la calle</option>
+                        <option value="flyer">Flyer</option>
+                        <option value="website">Página web</option>
+                        <option value="other">Otros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña<span class="required">*</span></label>
+                    <div class="password-field">
+                        <input type="password" id="password" name="password" placeholder="Contraseña">
+                        <button type="button" class="password-toggle" data-password-toggle="password">Mostrar</button>
+                    </div>
+                    <small class="helper-text password-helper">Generar contraseña con al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial</small>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="confirm-password">Confirmar contraseña<span class="required">*</span></label>
+                    <div class="password-field">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar contraseña">
+                        <button type="button" class="password-toggle" data-password-toggle="confirm-password">Mostrar</button>
+                    </div>
+                    <small class="helper-text password-helper">Generar contraseña con al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial</small>
+                </div>
+                <div class="form-group placeholder-column"></div>
+            </div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-group">
+                    <label for="privacy-accept">
+                        <input type="checkbox" id="privacy-accept" name="privacy-accept">
+                        He leído y acepto el <span class="fake-link">aviso de privacidad</span><span class="required">*</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn-primary" id="submit-btn">Registrarme</button>
+            </div>
+        </form>
+
+        <section id="practice-result" class="practice-result" aria-live="polite" hidden></section>
+    </main>
+
+    <footer class="page-footer">
+        <div class="footer-logo-placeholder">
+            <img src="../assets/images/conmigo_logo_footer.png" alt="Conmigo">
+        </div>
+        <p>Ambiente de práctica · La información no se almacena ni se envía a sistemas productivos.</p>
+    </footer>
+    <script src="../js/validators.js"></script>
+    <script src="../js/feedback.js"></script>
+    <script src="../js/form-1.js"></script>
+</body>
+</html>

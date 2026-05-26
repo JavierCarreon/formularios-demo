@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 2 - Solicitud de credito</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="form2-page">
+    <header class="page-header">
+        <div class="topbar">
+            <div class="logo-placeholder">
+                <img src="../assets/images/conmigo_vales_logo1.png" alt="Conmigo Vales">
+            </div>
+            <div class="header-actions">
+                <span class="nav-link">Iniciar sesi&oacute;n</span>
+                <button type="button" class="nav-button">Reg&iacute;strate</button>
+            </div>
+            <button type="button" class="menu-toggle" aria-label="Menu principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="form2-main">
+        <section class="form2-hero" aria-labelledby="form2-title">
+            <div>
+                <h1 id="form2-title">Solicita tu cr&eacute;dito</h1>
+                <p>&iexcl;Est&aacute;s a solo 1 paso de completar tu solicitud!</p>
+                <p class="practice-legend subtle">Ambiente de pr&aacute;ctica &middot; La informaci&oacute;n no se almacena ni se env&iacute;a a sistemas productivos.</p>
+            </div>
+        </section>
+
+        <section class="form2-practice-section" aria-labelledby="form2-practice-title">
+            <h2 id="form2-practice-title">Datos de pr&aacute;ctica</h2>
+            <div class="form2-practice-grid">
+                <div class="form-group">
+                    <label for="form2-practice-collaborator">Nombre del colaborador en capacitaci&oacute;n<span class="required">*</span></label>
+                    <input type="text" id="form2-practice-collaborator" name="form2-practice-collaborator" placeholder="Nombre del colaborador en capacitaci&oacute;n" data-form2-practice-field>
+                </div>
+                <div class="form-group">
+                    <label for="form2-practice-branch">Sucursal<span class="required">*</span></label>
+                    <input type="text" id="form2-practice-branch" name="form2-practice-branch" placeholder="Sucursal" data-form2-practice-field>
+                </div>
+                <div class="form-group">
+                    <label for="form2-practice-id">ID<span class="required">*</span></label>
+                    <input type="text" id="form2-practice-id" name="form2-practice-id" inputmode="numeric" maxlength="6" placeholder="ID" data-form2-practice-field>
+                </div>
+            </div>
+        </section>
+
+        <div class="form2-shell">
+            <aside class="form2-process" aria-label="Proceso de solicitud">
+                <h2>Proceso de solicitud</h2>
+                <div class="stepper-list form2-stepper-compact">
+                    <div class="stepper-item">
+                        <span class="stepper-marker">
+                            <span class="stepper-dot"></span>
+                            <small>Paso 1</small>
+                        </span>
+                        <span class="stepper-copy">
+                            <strong>Datos del cr&eacute;dito</strong>
+                        </span>
+                    </div>
+                    <div class="stepper-item is-active">
+                        <span class="stepper-marker">
+                            <span class="stepper-dot"></span>
+                            <small>Paso 2</small>
+                        </span>
+                        <span class="stepper-copy">
+                            <strong>Solicitante</strong>
+                        </span>
+                    </div>
+                </div>
+            </aside>
+
+            <form class="form2-form" aria-label="Formulario 2">
+                <div class="form2-step-title">
+                    <h2>Paso 2: Solicitante</h2>
+                </div>
+
+                <section class="form2-section form2-ine-section" aria-labelledby="ine-title">
+                    <div class="form2-section-heading">
+                        <h3 id="ine-title">Validaci&oacute;n INE</h3>
+                    </div>
+                    <div class="ine-intro">
+                        <img class="ine-visual" src="../assets/images/INE.jpg" alt="Identificaci&oacute;n oficial">
+                        <h4>Identificaci&oacute;n oficial</h4>
+                        <p>Para seguir con tu solicitud, es necesario cargar tu identificaci&oacute;n oficial.</p>
+                        <p>El documento ser&aacute; verificado autom&aacute;ticamente.</p>
+                        <button type="button" class="btn-outline" data-open-ine>Subir archivo</button>
+                        <p class="form2-section-note" data-section-error="ine" hidden></p>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="info-title">
+                    <div class="form2-section-heading">
+                        <h3 id="info-title">Informaci&oacute;n adicional</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group">
+                            <label for="birth-state">Entidad federativa de nacimiento<span class="required">*</span></label>
+                            <input type="text" id="birth-state" name="birth-state" placeholder="Entidad federativa de nacimiento">
+                        </div>
+                        <div class="form-group">
+                            <label for="birth-country">Pa&iacute;s de nacimiento<span class="required">*</span></label>
+                            <input type="text" id="birth-country" name="birth-country" placeholder="Pa&iacute;s de nacimiento">
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">Nacionalidad<span class="required">*</span></label>
+                            <select id="nationality" name="nationality">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Mexicana</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="occupation">Ocupaci&oacute;n<span class="required">*</span></label>
+                            <select id="occupation" name="occupation">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Empleado(a)</option>
+                                <option>Comerciante (negocio)</option>
+                                <option>Hogar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="economic-activity">Actividad o giro econ&oacute;mico SAT<span class="required">*</span></label>
+                            <select id="economic-activity" name="economic-activity">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>CENTRO DE BENEFICENCIA</option>
+                                <option>ACTIVIDADES DE CLUBES DEPORTIVOS</option>
+                                <option>ACABADO DE TELAS</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="economic-sector">Sector econ&oacute;mico<span class="required">*</span></label>
+                            <select id="economic-sector" name="economic-sector">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>COMERCIO</option>
+                                <option>SERVICIOS</option>
+                                <option>INDUSTRIA</option>
+                                <option>AGR&Iacute;COLA</option>
+                                <option>OTRO</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="commerce-line">Giro - Comercio<span class="required">*</span></label>
+                            <select id="commerce-line" name="commerce-line">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Abarrotes</option>
+                                <option>Ropa y calzado</option>
+                                <option>Alimentos preparados</option>
+                                <option>Belleza / est&eacute;tica</option>
+                                <option>Venta por cat&aacute;logo</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="same-business-address">El domicilio de la actividad econ&oacute;mica, &iquest;Es la misma que el domicilio del Solicitante?<span class="required">*</span></label>
+                            <select id="same-business-address" name="same-business-address">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>S&iacute;</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="signature-series">No. Serie de firma electr&oacute;nica</label>
+                            <input type="text" id="signature-series" name="signature-series" placeholder="No. Serie de firma electr&oacute;nica">
+                        </div>
+                        <div class="form-group">
+                            <label for="form2-phone">Celular<span class="required">*</span></label>
+                            <input type="tel" id="form2-phone" name="form2-phone" placeholder="Celular">
+                        </div>
+                        <div class="form-group">
+                            <label for="landline">Tel&eacute;fono fijo</label>
+                            <input type="tel" id="landline" name="landline" placeholder="Tel&eacute;fono fijo">
+                        </div>
+                        <div class="form-group">
+                            <label for="form2-email">Correo electr&oacute;nico<span class="required">*</span></label>
+                            <input type="email" id="form2-email" name="form2-email" placeholder="Correo electr&oacute;nico">
+                        </div>
+                        <div class="form-group">
+                            <label for="referred-by-distributor">Me refiri&oacute; una distribuidora<span class="required">*</span></label>
+                            <select id="referred-by-distributor" name="referred-by-distributor">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>S&iacute;</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="referrer-curp">CURP de la DT que te refiri&oacute;</label>
+                            <input type="text" id="referrer-curp" name="referrer-curp" placeholder="CURP de la DT que te refiri&oacute;">
+                        </div>
+                        <div class="form-group">
+                            <label for="form2-branch">Sucursal<span class="required">*</span></label>
+                            <input type="text" id="form2-branch" name="form2-branch" placeholder="Sucursal">
+                        </div>
+                        <div class="form-group">
+                            <label for="form2-collaborator">Colaborador<span class="required">*</span></label>
+                            <input type="text" id="form2-collaborator" name="form2-collaborator" placeholder="Colaborador">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="rfc-title">
+                    <div class="form2-section-heading">
+                        <h3 id="rfc-title">RFC del solicitante</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group">
+                            <label for="rfc">RFC<span class="required">*</span></label>
+                            <input type="text" id="rfc" name="rfc" maxlength="10" placeholder="RFC">
+                        </div>
+                        <div class="form-group">
+                            <label for="rfc-homoclave">Homoclave de RFC</label>
+                            <input type="text" id="rfc-homoclave" name="rfc-homoclave" maxlength="3" placeholder="Homoclave de RFC">
+                        </div>
+                        <div class="form-group">
+                            <label for="rfc-confirmation">Bajo protesta de decir verdad, confirmo que no cuento con RFC con Homoclave.<span class="required">*</span></label>
+                            <select id="rfc-confirmation" name="rfc-confirmation">
+                                <option>S&iacute; cuento con homoclave</option>
+                                <option>No cuento con homoclave</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="prospect-rfc">RFC del prospecto<span class="required">*</span></label>
+                            <input type="text" id="prospect-rfc" name="prospect-rfc" maxlength="13" placeholder="RFC del prospecto">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="address-title">
+                    <div class="form2-section-heading">
+                        <h3 id="address-title">Domicilio del solicitante</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group">
+                            <label for="street">Calle<span class="required">*</span></label>
+                            <input type="text" id="street" name="street" placeholder="Calle">
+                        </div>
+                        <div class="form-group">
+                            <label for="external-number">No. exterior<span class="required">*</span></label>
+                            <input type="text" id="external-number" name="external-number" placeholder="No. exterior">
+                        </div>
+                        <div class="form-group">
+                            <label for="internal-number">No. interior</label>
+                            <input type="text" id="internal-number" name="internal-number" placeholder="No. interior">
+                        </div>
+                        <div class="form-group">
+                            <label for="between-street">Entre calle<span class="required">*</span></label>
+                            <input type="text" id="between-street" name="between-street" placeholder="Entre calle">
+                        </div>
+                        <div class="form-group">
+                            <label for="and-street">Y calle<span class="required">*</span></label>
+                            <input type="text" id="and-street" name="and-street" placeholder="Y calle">
+                        </div>
+                        <div class="form-group">
+                            <label for="reference">Referencia<span class="required">*</span></label>
+                            <input type="text" id="reference" name="reference" placeholder="Referencia">
+                        </div>
+                        <div class="form-group">
+                            <label for="postal-code">C.P.<span class="required">*</span></label>
+                            <input type="text" id="postal-code" name="postal-code" inputmode="numeric" maxlength="5" placeholder="C.P.">
+                        </div>
+                        <div class="form-group">
+                            <label for="neighborhood">Colonia<span class="required">*</span></label>
+                            <select id="neighborhood" name="neighborhood">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Estadio</option>
+                            </select>
+                            <input type="text" id="neighborhood-manual" name="neighborhood-manual" placeholder="Colonia" data-neighborhood-manual hidden>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Alcald&iacute;a o municipio<span class="required">*</span></label>
+                            <input type="text" id="municipality" name="municipality" placeholder="Alcald&iacute;a o municipio">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Ciudad<span class="required">*</span></label>
+                            <input type="text" id="city" name="city" placeholder="Ciudad">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">Estado<span class="required">*</span></label>
+                            <input type="text" id="state" name="state" placeholder="Estado">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Pa&iacute;s<span class="required">*</span></label>
+                            <input type="text" id="country" name="country" placeholder="Pa&iacute;s">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="proof-title">
+                    <div class="form2-section-heading">
+                        <h3 id="proof-title">Comprobante de domicilio</h3>
+                    </div>
+                    <div class="document-card proof-card" data-proof-card>
+                        <div class="document-icon" aria-hidden="true">DOC</div>
+                        <div class="document-copy">
+                            <h4>Comprobante de domicilio (no mayor a 3 meses de antig&uuml;edad)<span class="required">*</span></h4>
+                            <button type="button" class="document-link" data-proof-view disabled>Ver documento</button>
+                        </div>
+                        <span class="document-status is-pending" data-proof-status>Documento pendiente</span>
+                        <button type="button" class="btn-outline" data-proof-upload>Subir</button>
+                        <input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-proof-file aria-label="Subir comprobante de domicilio">
+                    </div>
+                    <p class="form2-section-note" data-section-error="proof" hidden></p>
+                </section>
+
+                <section class="form2-section" aria-labelledby="selfie-title">
+                    <div class="form2-section-heading">
+                        <h3 id="selfie-title">Validaci&oacute;n biom&eacute;trica selfie</h3>
+                    </div>
+                    <div class="document-card selfie-card" data-selfie-card>
+                        <div class="selfie-initial" data-selfie-initial>
+                            <img class="selfie-visual" src="../assets/images/selfie-validate.d93af19.svg" alt="Validaci&oacute;n biom&eacute;trica selfie">
+                            <p>T&oacute;mate una selfie, da clic en "tomar foto" para activar tu c&aacute;mara. A continuaci&oacute;n t&oacute;mate una selfie, aseg&uacute;rate de posicionarte derecho frente a la c&aacute;mara y con tu rostro descubierto.</p>
+                            <div class="document-actions">
+                                <button type="button" class="btn-primary form2-small-button" data-selfie-validate>Tomar foto</button>
+                                <button type="button" class="btn-outline" data-selfie-upload>Subir selfie</button>
+                            </div>
+                            <input type="file" class="visually-hidden" accept="image/*" data-selfie-file aria-label="Subir selfie">
+                        </div>
+                        <div class="selfie-processing" data-selfie-processing hidden>
+                            <div class="form2-loader" aria-hidden="true"></div>
+                            <strong>Espera un momento, estamos comparando y validando tu foto</strong>
+                            <div class="form2-progress"><span></span></div>
+                        </div>
+                        <div class="selfie-success" data-selfie-success hidden>
+                            <div class="selfie-check" aria-hidden="true">&#10003;</div>
+                            <strong>Porcentaje de similitud de rostros encontrada</strong>
+                            <p>&iexcl;Felicidades! tu foto ha sido validada.</p>
+                            <button type="button" class="btn-primary form2-small-button" data-selfie-validate-again>Validar nuevamente</button>
+                        </div>
+                    </div>
+                    <p class="form2-section-note" data-section-error="selfie" hidden></p>
+                </section>
+
+                <section class="form2-section" aria-labelledby="credit-title">
+                    <div class="form2-section-heading">
+                        <h3 id="credit-title">Historial crediticio</h3>
+                    </div>
+                    <div class="credit-auth">
+                        <img class="credit-auth-icon" src="../assets/images/credit-bureau-authorization.52b512d.svg" alt="Autorizaci&oacute;n de historial crediticio">
+                        <div class="credit-auth-content">
+                            <h4>Autorizaci&oacute;n para solicitar Reportes de Cr&eacute;dito</h4>
+                            <div data-identity-auth-state>
+                                <p class="credit-auth-subtitle">Autenticaci&oacute;n de identidad</p>
+                                <label class="credit-checkbox" for="credit-terms">
+                                    <input type="checkbox" id="credit-terms" name="credit-terms">
+                                    <span>Acepto <strong>t&eacute;rminos y condiciones y cl&aacute;usulas de medios electr&oacute;nicos</strong> tales como NIP.</span>
+                                </label>
+                                <p class="form2-section-note" data-section-error="credit-terms" hidden></p>
+                                <div class="legal-copy">
+                                    <p>Por este conducto autorizo expresamente a SFC VALES S.A.P.I.DE C.V., en adelante &ldquo;CONMIGOVALES&rdquo;, para que por conducto de sus funcionarios facultados lleve a cabo investigaciones, sobre mi comportamiento crediticio o el de la Empresa que represento.</p>
+                                    <p>Asimismo, declaro que conozco la naturaleza y alcance de las sociedades de informaci&oacute;n crediticia y de la informaci&oacute;n contenida en los reportes de cr&eacute;dito y reporte de cr&eacute;dito especial, declaro que conozco la naturaleza y alcance de la informaci&oacute;n que solicitar&aacute;, del uso que har&aacute; de tal informaci&oacute;n y de que esta podr&aacute; realizar consultas peri&oacute;dicas sobre mi historial o el de la empresa que represento, consintiendo que esta autorizaci&oacute;n se encuentre vigente por un periodo de 3 a&ntilde;os contados a partir de su expedici&oacute;n y en todo caso durante el tiempo que se mantenga la relaci&oacute;n jur&iacute;dica.</p>
+                                    <p>La informaci&oacute;n a continuaci&oacute;n proporcionada ser&aacute; utilizada &uacute;nicamente para lectura y consulta de tu informaci&oacute;n, con la finalidad de ofrecerte un mejor servicio. SFC VALES S.A.P.I.DE C.V., en adelante &ldquo;CONMIGOVALES&rdquo;, no conserva ninguna copia de los mismos, ni de tus contrase&ntilde;as.</p>
+                                    <p>En caso de que el solicitante sea una Persona Moral, declaro bajo protesta de decir verdad Ser Representante Legal de la empresa mencionada en esta autorizaci&oacute;n, manifiesto que a la fecha de firma de la presente autorizaci&oacute;n los poderes no me han sido revocados, limitados, ni modificados de forma alguna.</p>
+                                    <p>Acepto que este documento quede bajo propiedad de SFC VALES S.A.P.I.DE C.V., en adelante &ldquo;CONMIGOVALES para efectos de control y cumplimiento del art&iacute;culo 28 de la LRSIC.&rdquo;</p>
+                                </div>
+                            </div>
+                            <div class="nip-confirmed identity-confirmed" data-identity-confirmed hidden>
+                                <img class="nip-confirmed-icon" src="../assets/images/descarga.svg" alt="" aria-hidden="true">
+                                <strong>NIP confirmado</strong>
+                                <p>Contin&uacute;a tu solicitud.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="nip-title" data-nip-section>
+                    <div class="nip-card">
+                        <div class="nip-input-state" data-nip-input-state>
+                            <h3 id="nip-title">Ingresa nuevamente el NIP de verificaci&oacute;n que recibiste por tel&eacute;fono.</h3>
+                            <div class="nip-inputs" aria-label="NIP de verificacion">
+                                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digito 1" data-nip-input>
+                                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digito 2" data-nip-input>
+                                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digito 3" data-nip-input>
+                                <input type="text" inputmode="numeric" maxlength="1" aria-label="Digito 4" data-nip-input>
+                            </div>
+                            <button type="button" class="nip-resend">Reenviar</button>
+                            <div class="nip-actions">
+                                <button type="button" class="btn-outline">Cancelar</button>
+                                <button type="button" class="btn-primary is-disabled" disabled data-nip-send>Enviar</button>
+                            </div>
+                        </div>
+                        <div class="nip-confirmed" data-nip-confirmed hidden>
+                            <img class="nip-confirmed-icon" src="../assets/images/descarga.svg" alt="" aria-hidden="true">
+                            <strong>NIP confirmado</strong>
+                            <p>Contin&uacute;a tu solicitud.</p>
+                        </div>
+                        <p class="form2-section-note" data-section-error="nip" hidden></p>
+                    </div>
+                </section>
+            </form>
+        </div>
+
+        <section id="form2-practice-result" class="practice-result form2-practice-result" aria-live="polite" hidden></section>
+
+        <section class="form2-success-screen" data-form2-success hidden>
+            <div class="form2-success-check" aria-hidden="true">&#10003;</div>
+            <h2>&iexcl;Felicidades, has finalizado la primera fase de tu solicitud!</h2>
+            <p>Tu solicitud ser&aacute; evaluada por nuestros especialistas y en breve te daremos seguimiento para que puedas continuar con la segunda fase</p>
+            <button type="button" class="btn-primary" data-show-feedback>Ir a mis solicitudes</button>
+        </section>
+
+        <div class="form2-bottom-bar" aria-label="Acciones del formulario">
+            <button type="button" class="btn-secondary">Regresar</button>
+            <div class="form2-bottom-status">
+                <strong data-form2-status-title>Completa la informaci&oacute;n requerida para finalizar</strong>
+                <span>Ambiente de pr&aacute;ctica</span>
+            </div>
+            <button type="button" class="btn-primary is-disabled" disabled data-form2-finalize>Finalizar</button>
+        </div>
+    </main>
+
+    <div class="form2-modal" data-modal="ine" hidden>
+        <div class="form2-modal-backdrop" data-close-modal></div>
+        <section class="form2-modal-panel" role="dialog" aria-modal="true" aria-labelledby="ine-modal-title">
+            <button type="button" class="form2-modal-close" data-close-modal aria-label="Cerrar">&times;</button>
+            <h2 id="ine-modal-title">Identificaci&oacute;n oficial</h2>
+            <p>Adjunta una captura de tu INE (anverso y reverso).</p>
+            <div class="ine-upload-grid">
+                <div class="ine-upload-card">
+                    <h3>Frente</h3>
+                    <div class="file-preview ine-empty-preview" data-ine-preview="front">
+                        <img src="../assets/images/uploadfile.95ff695.png" alt="" aria-hidden="true">
+                        <strong>Arrastra aqu&iacute; tu archivo Frente</strong>
+                        <span>Sube tu archivo en formato JPEG o PNG</span>
+                    </div>
+                    <div class="document-actions">
+                        <button type="button" class="form2-text-button" data-ine-camera="front">Tomar Fotograf&iacute;a</button>
+                        <button type="button" class="btn-outline" data-ine-upload="front">Subir archivo</button>
+                    </div>
+                    <input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-ine-file="front" aria-label="Subir frente de INE">
+                </div>
+                <div class="ine-upload-card">
+                    <h3>Reverso</h3>
+                    <div class="file-preview ine-empty-preview" data-ine-preview="back">
+                        <img src="../assets/images/uploadfile.95ff695.png" alt="" aria-hidden="true">
+                        <strong>Arrastra aqu&iacute; tu archivo Reverso</strong>
+                        <span>Sube tu archivo en formato JPEG o PNG</span>
+                    </div>
+                    <div class="document-actions">
+                        <button type="button" class="form2-text-button" data-ine-camera="back">Tomar Fotograf&iacute;a</button>
+                        <button type="button" class="btn-outline" data-ine-upload="back">Subir archivo</button>
+                    </div>
+                    <input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-ine-file="back" aria-label="Subir reverso de INE">
+                </div>
+            </div>
+            <p class="form2-section-note" data-modal-message="ine" hidden></p>
+            <div class="form2-modal-actions">
+                <button type="button" class="btn-outline" data-close-modal>Cerrar</button>
+                <button type="button" class="btn-primary is-disabled" disabled data-ine-continue>Continuar</button>
+            </div>
+        </section>
+    </div>
+
+    <div class="form2-modal" data-modal="preview" hidden>
+        <div class="form2-modal-backdrop" data-close-modal></div>
+        <section class="form2-modal-panel form2-preview-panel" role="dialog" aria-modal="true" aria-labelledby="preview-modal-title">
+            <button type="button" class="form2-modal-close" data-close-modal aria-label="Cerrar">&times;</button>
+            <h2 id="preview-modal-title">Comprobante de domicilio (no mayor a 3 meses de antigüedad)</h2>
+            <div class="file-preview file-preview-large" data-preview-content></div>
+            <div class="form2-modal-actions">
+                <button type="button" class="btn-outline" data-close-modal>Cerrar</button>
+            </div>
+        </section>
+    </div>
+
+    <div class="form2-modal" data-modal="camera" hidden>
+        <div class="form2-modal-backdrop" data-camera-cancel></div>
+        <section class="form2-modal-panel form2-camera-panel" role="dialog" aria-modal="true" aria-labelledby="camera-modal-title">
+            <button type="button" class="form2-modal-close" data-camera-cancel aria-label="Cerrar">&times;</button>
+            <h2 id="camera-modal-title">Tomar fotograf&iacute;a</h2>
+            <p data-camera-message>Acomoda el documento o tu rostro dentro del recuadro.</p>
+            <video class="camera-video" autoplay playsinline data-camera-video></video>
+            <canvas class="camera-canvas" data-camera-canvas hidden></canvas>
+            <div class="file-preview file-preview-large" data-camera-preview hidden></div>
+            <p class="form2-section-note" data-camera-error hidden></p>
+            <div class="form2-modal-actions">
+                <button type="button" class="btn-outline" data-camera-cancel>Cancelar</button>
+                <button type="button" class="btn-primary" data-camera-capture>Tomar foto</button>
+                <button type="button" class="btn-outline" data-camera-retake hidden>Volver a tomar</button>
+                <button type="button" class="btn-primary is-disabled" disabled data-camera-continue>Continuar</button>
+            </div>
+        </section>
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-logo-placeholder">
+            <img src="../assets/images/conmigo_logo_footer.png" alt="Conmigo">
+        </div>
+        <p>Ambiente de pr&aacute;ctica &middot; La informaci&oacute;n no se almacena ni se env&iacute;a a sistemas productivos.</p>
+    </footer>
+    <script src="../js/form-2.js"></script>
+</body>
+</html>
