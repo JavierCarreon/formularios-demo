@@ -200,8 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 message: 'No se encontró el campo en el formulario.'
             };
 
-            updateFieldState(input, result);
-
             return {
                 id: field.id,
                 label: field.label,
@@ -212,6 +210,12 @@ document.addEventListener('DOMContentLoaded', function () {
             };
         });
 
+        applyPasswordMatchResult(results);
+
+        results.forEach(function (result) {
+            updateFieldState(document.getElementById(result.id), result);
+        });
+
         var metrics = PracticeFeedback.calculate(results);
         var collaborator = document.getElementById('practitioner-name');
         PracticeFeedback.render(resultPanel, collaborator ? collaborator.value.trim() : '', metrics);
@@ -219,6 +223,28 @@ document.addEventListener('DOMContentLoaded', function () {
         if (resultPanel) {
             resultPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+    }
+
+    function applyPasswordMatchResult(results) {
+        var password = document.getElementById('password');
+        var confirmation = document.getElementById('confirm-password');
+        var mismatchMessage = 'Las contraseñas no coinciden. Verifica que sean iguales.';
+
+        if (!password || !confirmation || !password.value || !confirmation.value || password.value === confirmation.value) {
+            return;
+        }
+
+        results.forEach(function (result) {
+            if (result.id === 'password' && result.valid) {
+                result.hideFromFeedback = true;
+            }
+
+            if (result.id === 'confirm-password') {
+                result.valid = false;
+                result.filled = true;
+                result.message = mismatchMessage;
+            }
+        });
     }
 
     function updateFieldState(input, result) {

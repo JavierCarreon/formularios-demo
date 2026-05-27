@@ -1451,6 +1451,15 @@ button {
 }
 
 @media print {
+    .form1-page .page-header,
+    .form1-page .btn-print {
+        display: none !important;
+    }
+
+    .form1-page .page-main {
+        padding-top: 0 !important;
+    }
+
     body.is-printing-feedback {
         overflow: visible !important;
     }

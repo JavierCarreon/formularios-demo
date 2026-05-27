@@ -45,7 +45,7 @@ window.PracticeFeedback = (function () {
             correctPercent: correctPercent,
             performanceMessage: getPerformance(correctPercent),
             correctFields: fieldResults.filter(function (field) {
-                return field.valid && (field.required || field.filled);
+                return field.valid && !field.hideFromFeedback && (field.required || field.filled);
             }),
             reviewFields: reviewFields
         };
