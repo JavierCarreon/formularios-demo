@@ -102,11 +102,15 @@
                     <div class="form2-grid">
                         <div class="form-group">
                             <label for="birth-state">Entidad federativa de nacimiento<span class="required">*</span></label>
-                            <input type="text" id="birth-state" name="birth-state" placeholder="Entidad federativa de nacimiento">
+                            <select id="birth-state" name="birth-state">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="birth-country">Pa&iacute;s de nacimiento<span class="required">*</span></label>
-                            <input type="text" id="birth-country" name="birth-country" placeholder="Pa&iacute;s de nacimiento">
+                            <select id="birth-country" name="birth-country">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="nationality">Nacionalidad<span class="required">*</span></label>
@@ -128,9 +132,6 @@
                             <label for="economic-activity">Actividad o giro econ&oacute;mico SAT<span class="required">*</span></label>
                             <select id="economic-activity" name="economic-activity">
                                 <option value="">Seleccione una opci&oacute;n</option>
-                                <option>CENTRO DE BENEFICENCIA</option>
-                                <option>ACTIVIDADES DE CLUBES DEPORTIVOS</option>
-                                <option>ACABADO DE TELAS</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -298,7 +299,7 @@
                         <div class="document-icon" aria-hidden="true">DOC</div>
                         <div class="document-copy">
                             <h4>Comprobante de domicilio (no mayor a 3 meses de antig&uuml;edad)<span class="required">*</span></h4>
-                            <button type="button" class="document-link" data-proof-view disabled>Ver documento</button>
+                            <button type="button" class="document-link" data-proof-view disabled hidden>Ver documento</button>
                         </div>
                         <span class="document-status is-pending" data-proof-status>Documento pendiente</span>
                         <button type="button" class="btn-outline" data-proof-upload>Subir</button>

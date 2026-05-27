@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupGlobalModalClose();
     setupInputLimits();
     setupPostalCode(postalCatalog, state);
+    loadForm2Catalogs(postalCatalog, state);
     setupIneModal(state);
     setupProofDocument(state);
     setupSelfieState(state);
@@ -112,6 +113,71 @@ function setupFormState(state) {
     }
 
     updateFinalState(state, false);
+}
+
+function loadForm2Catalogs(postalCatalog, state) {
+    Promise.all([
+        getStaticCatalog('../data/actividades-sat.json'),
+        getStaticCatalog('../data/formulario-2-selects.json'),
+        getStaticCatalog('../data/sepomex-index.json')
+    ]).then(function (catalogs) {
+        var activities = catalogs[0];
+        var birthCatalogs = catalogs[1];
+        var sepomexCatalog = catalogs[2];
+
+        populateCatalogSelect('economic-activity', activities);
+        populateCatalogSelect('birth-state', birthCatalogs.entidades);
+        populateCatalogSelect('birth-country', birthCatalogs.paises);
+
+        Object.keys(postalCatalog).forEach(function (cp) {
+            delete postalCatalog[cp];
+        });
+        Object.keys(sepomexCatalog).forEach(function (cp) {
+            postalCatalog[cp] = sepomexCatalog[cp];
+        });
+
+        var currentPostalCode = getValue('postal-code');
+        if (/^\d{5}$/.test(currentPostalCode)) {
+            applyPostalCatalog(currentPostalCode, postalCatalog, state);
+        }
+        updateFinalState(state, false);
+    }).catch(function () {
+        var currentPostalCode = getValue('postal-code');
+        if (/^\d{5}$/.test(currentPostalCode)) {
+            applyPostalCatalog(currentPostalCode, postalCatalog, state);
+        }
+    });
+}
+
+function getStaticCatalog(path) {
+    return fetch(path).then(function (response) {
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el catálogo local.');
+        }
+        return response.json();
+    });
+}
+
+function populateCatalogSelect(id, items) {
+    var select = document.getElementById(id);
+    var previousValue;
+
+    if (!select || !Array.isArray(items)) {
+        return;
+    }
+
+    previousValue = select.value;
+    select.innerHTML = '<option value="">Seleccione una opción</option>';
+    items.forEach(function (item) {
+        var option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        select.appendChild(option);
+    });
+
+    if (items.indexOf(previousValue) >= 0) {
+        select.value = previousValue;
+    }
 }
 
 function setupInputLimits() {
@@ -795,10 +861,9 @@ function addIneFields(fields, sections, state) {
 }
 
 function addInformationFields(fields) {
-    addUppercaseTextField(fields, 'birth-state', 'Entidad federativa de nacimiento', true, 2, 50, 'Debes capturar una entidad federativa de nacimiento válida.');
-    addUppercaseTextField(fields, 'birth-country', 'País de nacimiento', true, 2, 50, 'Debes capturar un país de nacimiento válido.');
-
     [
+        ['birth-state', 'Entidad federativa de nacimiento', 'Debes seleccionar una entidad federativa de nacimiento.'],
+        ['birth-country', 'País de nacimiento', 'Debes seleccionar un país de nacimiento.'],
         ['nationality', 'Nacionalidad', 'Debes seleccionar una nacionalidad.'],
         ['occupation', 'Ocupación', 'Debes seleccionar una ocupación.'],
         ['economic-activity', 'Actividad o giro económico SAT', 'Debes seleccionar una actividad.'],
@@ -1360,20 +1425,24 @@ function renderProofState(state) {
     var status = document.querySelector('[data-proof-status]');
     var uploadButton = document.querySelector('[data-proof-upload]');
     var viewButton = document.querySelector('[data-proof-view]');
+    var proofLoaded = !!state.proof;
 
     if (status) {
-        status.textContent = 'Documento cargado';
-        status.classList.remove('is-pending');
-        status.classList.add('is-loaded');
+        status.textContent = proofLoaded ? 'Documento cargado' : 'Documento pendiente';
+        status.classList.toggle('is-pending', !proofLoaded);
+        status.classList.toggle('is-loaded', proofLoaded);
     }
     if (uploadButton) {
-        uploadButton.textContent = 'Volver a subir';
+        uploadButton.textContent = proofLoaded ? 'Volver a subir' : 'Subir';
     }
     if (viewButton) {
-        viewButton.disabled = false;
+        viewButton.hidden = !proofLoaded;
+        viewButton.disabled = !proofLoaded;
     }
 
-    setSectionMessage('proof', '', true);
+    if (proofLoaded) {
+        setSectionMessage('proof', '', true);
+    }
 }
 
 function renderSelfieState(view) {
