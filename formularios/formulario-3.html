@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 3 - Datos socioeconomicos solicitante</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="form2-page form3-page">
+    <header class="page-header">
+        <div class="topbar">
+            <div class="logo-placeholder">
+                <img src="../assets/images/conmigo_vales_logo1.png" alt="Conmigo Vales">
+            </div>
+            <div class="header-actions">
+                <span class="nav-link">Iniciar sesi&oacute;n</span>
+                <button type="button" class="nav-button">Reg&iacute;strate</button>
+            </div>
+            <button type="button" class="menu-toggle" aria-label="Menu principal">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="form2-main form3-main">
+        <section class="form2-hero form3-hero" aria-labelledby="form3-title">
+            <h1 id="form3-title">Solicita tu cr&eacute;dito</h1>
+            <p data-form3-progress-copy>&iexcl;Est&aacute;s a solo 4 pasos de completar tu solicitud!</p>
+            <p class="practice-legend subtle">Ambiente de pr&aacute;ctica &middot; La informaci&oacute;n capturada no se almacena ni se env&iacute;a a sistemas productivos.</p>
+        </section>
+
+        <section class="form2-practice-section form3-practice-section" aria-labelledby="form3-practice-title">
+            <h2 id="form3-practice-title">Datos de pr&aacute;ctica</h2>
+            <div class="form2-practice-grid">
+                <div class="form-group">
+                    <label for="form3-practice-collaborator">Nombre del colaborador en capacitaci&oacute;n<span class="required">*</span></label>
+                    <input type="text" id="form3-practice-collaborator" name="form3-practice-collaborator" placeholder="Nombre del colaborador en capacitaci&oacute;n" data-form3-practice-field>
+                </div>
+                <div class="form-group">
+                    <label for="form3-practice-branch">Sucursal<span class="required">*</span></label>
+                    <input type="text" id="form3-practice-branch" name="form3-practice-branch" placeholder="Sucursal" data-form3-practice-field>
+                </div>
+                <div class="form-group">
+                    <label for="form3-practice-id">ID<span class="required">*</span></label>
+                    <input type="text" id="form3-practice-id" name="form3-practice-id" inputmode="numeric" maxlength="6" pattern="[0-9]*" autocomplete="off" placeholder="ID" data-form3-practice-field>
+                </div>
+            </div>
+        </section>
+
+        <div class="form2-shell form3-shell">
+            <aside class="form2-process form3-process" aria-label="Proceso de solicitud">
+                <h2>Proceso de solicitud</h2>
+                <div class="stepper-list form3-stepper">
+                    <div class="stepper-item form3-step is-active" data-form3-step="1">
+                        <span class="stepper-copy"><strong>Datos socioecon&oacute;micos solicitante</strong></span>
+                        <span class="stepper-marker"><span class="stepper-dot"></span><small>Paso 1</small></span>
+                    </div>
+                    <div class="stepper-item form3-step" data-form3-step="2">
+                        <span class="stepper-copy"><strong>Aval</strong></span>
+                        <span class="stepper-marker"><span class="stepper-dot"></span><small>Paso 2</small></span>
+                    </div>
+                    <div class="stepper-item form3-step" data-form3-step="3">
+                        <span class="stepper-copy"><strong>Datos socioecon&oacute;micos aval</strong></span>
+                        <span class="stepper-marker"><span class="stepper-dot"></span><small>Paso 3</small></span>
+                    </div>
+                    <div class="stepper-item form3-step" data-form3-step="4">
+                        <span class="stepper-copy"><strong>Garant&iacute;a</strong></span>
+                        <span class="stepper-marker"><span class="stepper-dot"></span><small>Paso 4</small></span>
+                    </div>
+                </div>
+            </aside>
+
+            <form class="form2-form form3-form" aria-label="Formulario 3" novalidate>
+                <div class="form3-step-panel is-active" data-form3-step-panel="1">
+                <div class="form2-step-title form3-step-title">
+                    <h2>Paso 1: Datos socioecon&oacute;micos solicitante</h2>
+                </div>
+
+                <section class="form2-section" aria-labelledby="additional-applicant-title">
+                    <div class="form2-section-heading">
+                        <h3 id="additional-applicant-title">Informaci&oacute;n adicional del solicitante</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group">
+                            <label for="civil-status">Estado civil</label>
+                            <select id="civil-status" name="civil-status">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Casado(a)</option>
+                                <option>Divorciado(a)</option>
+                                <option>Separado(a)</option>
+                                <option>Soltero(a)</option>
+                                <option>Uni&oacute;n Libre</option>
+                                <option>Viudo(a)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="household-role">Rol en el hogar</label>
+                            <select id="household-role" name="household-role">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Esposo(a)</option>
+                                <option>Hijo(a)</option>
+                                <option>Jefe(a)</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="education">Ultima escolaridad terminada</label>
+                            <select id="education" name="education">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Ninguna</option>
+                                <option>Primaria</option>
+                                <option>Secundaria</option>
+                                <option>T&eacute;cnica o comercial</option>
+                                <option>Bachillerato</option>
+                                <option>Licenciatura</option>
+                                <option>Posgrado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="housing">Vivienda</label>
+                            <select id="housing" name="housing">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>En proceso de compra</option>
+                                <option>Familiar</option>
+                                <option>Prestada</option>
+                                <option>Propia</option>
+                                <option>Rentada</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="home-years">Antig&uuml;edad en el domicilio (a&ntilde;os)</label>
+                            <input type="text" id="home-years" name="home-years" placeholder="Antig&uuml;edad en el domicilio (a&ntilde;os)">
+                        </div>
+                        <div class="form-group">
+                            <label for="monthly-income">Ingreso mensual</label>
+                            <input type="text" id="monthly-income" name="monthly-income" placeholder="$ 0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="dependents">Dependientes econ&oacute;micos</label>
+                            <input type="text" id="dependents" name="dependents" placeholder="Dependientes econ&oacute;micos">
+                        </div>
+                        <div class="form-group">
+                            <label for="distributor-experience">&iquest;Tienes experiencia como distribuidor?</label>
+                            <select id="distributor-experience" name="distributor-experience">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Si</option>
+                                <option>No</option>
+                                <option>Experiencia de venta por cat&aacute;logo</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="economic-title">
+                    <div class="form2-section-heading">
+                        <h3 id="economic-title">Actividad econ&oacute;mica</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group">
+                            <label for="business-name">Nombre de la empresa o negocio<span class="required">*</span></label>
+                            <input type="text" id="business-name" name="business-name" placeholder="Nombre de la empresa o negocio">
+                        </div>
+                        <div class="form-group">
+                            <label for="business-line">Giro del negocio<span class="required">*</span></label>
+                            <input type="text" id="business-line" name="business-line" placeholder="Giro del negocio">
+                        </div>
+                        <div class="form-group">
+                            <label for="business-years">Antig&uuml;edad del negocio o empleo (a&ntilde;os)</label>
+                            <input type="text" id="business-years" name="business-years" placeholder="Antig&uuml;edad del negocio o empleo (a&ntilde;os)">
+                        </div>
+                        <div class="form-group">
+                            <label for="business-phone">Tel&eacute;fono del negocio/trabajo</label>
+                            <input type="tel" id="business-phone" name="business-phone" placeholder="Tel&eacute;fono del negocio/trabajo">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="economic-address-title">
+                    <div class="form2-section-heading">
+                        <h3 id="economic-address-title">Domicilio de la actividad econ&oacute;mica</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group"><label for="economic-street">Calle</label><input type="text" id="economic-street" placeholder="Calle"></div>
+                        <div class="form-group"><label for="economic-exterior">No. ext.</label><input type="text" id="economic-exterior" placeholder="No. ext."></div>
+                        <div class="form-group"><label for="economic-interior">No. Int.</label><input type="text" id="economic-interior" placeholder="No. Int."></div>
+                        <div class="form-group"><label for="economic-between">Entre calle</label><input type="text" id="economic-between" placeholder="Entre calle"></div>
+                        <div class="form-group"><label for="economic-and">Y calle</label><input type="text" id="economic-and" placeholder="Y calle"></div>
+                        <div class="form-group"><label for="economic-reference">Referencia</label><input type="text" id="economic-reference" placeholder="Referencia"></div>
+                        <div class="form-group"><label for="economic-postal">C.P.</label><input type="text" id="economic-postal" placeholder="C.P."></div>
+                        <div class="form-group">
+                            <label for="economic-neighborhood">Colonia</label>
+                            <select id="economic-neighborhood">
+                                <option value="">Seleccione una opci&oacute;n</option>
+                                <option>Picachos</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label for="economic-municipality">Alcald&iacute;a o municipio</label><input type="text" id="economic-municipality" placeholder="Alcald&iacute;a o municipio"></div>
+                        <div class="form-group"><label for="economic-city">Ciudad</label><input type="text" id="economic-city" placeholder="Ciudad"></div>
+                        <div class="form-group"><label for="economic-state">Estado</label><input type="text" id="economic-state" placeholder="Estado"></div>
+                        <div class="form-group"><label for="economic-country">Pa&iacute;s</label><input type="text" id="economic-country" placeholder="Pa&iacute;s"></div>
+                    </div>
+                </section>
+
+                <section class="form3-table-section" aria-labelledby="references-title">
+                    <div class="form3-table-heading">
+                        <h3 id="references-title">Referencias personales o familiares</h3>
+                        <button type="button" class="btn-outline form3-add" data-open-record="references">Agregar</button>
+                    </div>
+                    <div class="form3-table-scroll">
+                        <table class="form3-table" data-record-table="references" data-table-label="Referencias personales o familiares">
+                            <thead><tr><th>Primer nombre</th><th>Segundo nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>Acciones</th></tr></thead>
+                            <tbody><tr><td colspan="5">Sin informaci&oacute;n</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="form3-table-section" data-experience-section="distributor" aria-labelledby="distributor-experience-title" hidden>
+                    <div class="form3-table-heading">
+                        <h3 id="distributor-experience-title">Experiencia como distribuidor</h3>
+                        <button type="button" class="btn-outline form3-add" data-open-record="distributorExperience">Agregar</button>
+                    </div>
+                    <div class="form3-table-scroll">
+                        <table class="form3-table" data-record-table="distributorExperience" data-table-label="Experiencia como distribuidor">
+                            <thead><tr><th>Nombre de la empresa</th><th>Antig&uuml;edad</th><th>N&uacute;mero de clientes</th><th>L&iacute;nea de cr&eacute;dito autorizada</th><th>Acciones</th></tr></thead>
+                            <tbody><tr><td colspan="5">Sin informaci&oacute;n</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="form3-table-section" data-experience-section="catalog" aria-labelledby="catalog-experience-title" hidden>
+                    <div class="form3-table-heading">
+                        <h3 id="catalog-experience-title">Experiencia de venta por cat&aacute;logo</h3>
+                        <button type="button" class="btn-outline form3-add" data-open-record="catalogExperience">Agregar</button>
+                    </div>
+                    <div class="form3-table-scroll">
+                        <table class="form3-table" data-record-table="catalogExperience" data-table-label="Experiencia de venta por catálogo">
+                            <thead><tr><th>Nombre de la empresa</th><th>Antig&uuml;edad</th><th>N&uacute;mero de clientes</th><th>L&iacute;nea de cr&eacute;dito autorizada</th><th>Acciones</th></tr></thead>
+                            <tbody><tr><td colspan="5">Sin informaci&oacute;n</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="form2-section form3-spouse" data-form3-spouse hidden aria-labelledby="spouse-title">
+                    <div class="form2-section-heading">
+                        <h3 id="spouse-title">C&oacute;nyuge del solicitante</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group"><label for="spouse-first-name">Primer nombre</label><input type="text" id="spouse-first-name" placeholder="Primer nombre"></div>
+                        <div class="form-group"><label for="spouse-second-name">Segundo nombre</label><input type="text" id="spouse-second-name" placeholder="Segundo nombre" data-optional></div>
+                        <div class="form-group"><label for="spouse-last-name">Apellido paterno</label><input type="text" id="spouse-last-name" placeholder="Apellido paterno"></div>
+                        <div class="form-group"><label for="spouse-mother-name">Apellido materno</label><input type="text" id="spouse-mother-name" placeholder="Apellido materno"></div>
+                        <div class="form-group"><label for="spouse-gender">G&eacute;nero</label><select id="spouse-gender"><option value="">Seleccione una opci&oacute;n</option><option>Femenino</option><option>Masculino</option><option>Otro</option></select></div>
+                        <div class="form-group"><label for="spouse-birth-state">Entidad federativa de nacimiento</label><select id="spouse-birth-state"><option value="">Seleccione una opci&oacute;n</option><option>Durango</option><option>Sinaloa</option></select></div>
+                        <div class="form-group"><label for="spouse-birth-country">Pa&iacute;s de nacimiento</label><select id="spouse-birth-country"><option value="">Seleccione una opci&oacute;n</option><option>M&eacute;xico</option></select></div>
+                        <div class="form-group"><label for="spouse-nationality">Nacionalidad</label><select id="spouse-nationality"><option value="">Seleccione una opci&oacute;n</option><option>Mexicana</option></select></div>
+                        <div class="form-group"><label for="spouse-phone">Celular</label><input type="tel" id="spouse-phone" placeholder="Celular"></div>
+                    </div>
+                </section>
+
+                <section class="form3-table-section" aria-labelledby="beneficiaries-title">
+                    <div class="form3-table-heading">
+                        <h3 id="beneficiaries-title">Beneficiarios</h3>
+                        <button type="button" class="btn-outline form3-add" data-open-record="beneficiaries">Agregar</button>
+                    </div>
+                    <div class="form3-table-scroll">
+                        <table class="form3-table" data-record-table="beneficiaries" data-table-label="Beneficiarios">
+                            <thead><tr><th>Primer nombre</th><th>Segundo nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>Acciones</th></tr></thead>
+                            <tbody><tr><td colspan="5">Sin informaci&oacute;n</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="form3-table-section" aria-labelledby="coinsured-title">
+                    <div class="form3-table-heading">
+                        <h3 id="coinsured-title">Coasegurados</h3>
+                        <button type="button" class="btn-outline form3-add" data-open-record="coinsured">Agregar</button>
+                    </div>
+                    <div class="form3-table-scroll">
+                        <table class="form3-table" data-record-table="coinsured" data-table-label="Coasegurados">
+                            <thead><tr><th>Primer nombre</th><th>Segundo nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>Acciones</th></tr></thead>
+                            <tbody><tr><td colspan="5">Sin informaci&oacute;n</td></tr></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="form2-section form3-documents" aria-labelledby="documents-title">
+                    <div class="form2-section-heading">
+                        <h3 id="documents-title">Documentos del solicitante</h3>
+                    </div>
+                    <div class="document-card document-card-inline" data-form3-document="applicant-income" data-document-label="Comprobante de ingresos del solicitante">
+                        <div class="document-icon" aria-hidden="true">DOC</div>
+                        <div class="document-copy">
+                            <h4>Comprobante de ingresos (no mayor a 3 meses de antig&uuml;edad)</h4>
+                            <button type="button" class="document-link" data-document-view hidden>Ver documento</button>
+                        </div>
+                        <span class="document-status is-pending" data-document-status>Documento pendiente</span>
+                        <button type="button" class="btn-outline" data-document-upload>Subir</button>
+                        <input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir comprobante de ingresos">
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="transactional-title">
+                    <div class="form2-section-heading">
+                        <h3 id="transactional-title">Perfil transaccional</h3>
+                    </div>
+                    <div class="form2-grid">
+                        <div class="form-group">
+                            <label for="advance-payments">&iquest;Espera realizar pagos anticipados?</label>
+                            <select id="advance-payments"><option value="">Seleccione una opci&oacute;n</option><option>Si</option><option selected>No</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="early-payoff">&iquest;Espera liquidar su cr&eacute;dito dentro de los 2 primeros meses?</label>
+                            <select id="early-payoff"><option value="">Seleccione una opci&oacute;n</option><option>Si</option><option selected>No</option></select>
+                        </div>
+                        <div class="form-group"><label for="advance-count">&iquest;N&uacute;mero de pagos anticipados?</label><input type="text" id="advance-count" placeholder="&iquest;N&uacute;mero de pagos anticipados?" value="0"></div>
+                        <div class="form-group"><label for="advance-min">&iquest;Desde cu&aacute;nto ser&iacute;an los montos esperados como pagos anticipados?</label><input type="text" id="advance-min" placeholder="$ 0.00" value="$ 0.00"></div>
+                        <div class="form-group"><label for="advance-max">&iquest;Hasta cu&aacute;nto ser&iacute;an los montos esperados como pagos anticipados?</label><input type="text" id="advance-max" placeholder="$ 0.00" value="$ 0.00"></div>
+                        <div class="form-group"><label for="advance-frequency">Frecuencia de pagos anticipados</label><input type="text" id="advance-frequency" placeholder="Frecuencia de pagos anticipados"></div>
+                        <div class="form-group"><label for="payment-instrument">Instrumento con el que pagar&aacute; el cr&eacute;dito</label><input type="text" id="payment-instrument" placeholder="Instrumento con el que pagar&aacute; el cr&eacute;dito"></div>
+                    </div>
+                </section>
+
+                <section class="form2-section" aria-labelledby="interview-title">
+                    <div class="form2-section-heading">
+                        <h3 id="interview-title">Resultado de la entrevista</h3>
+                    </div>
+                    <div class="form2-grid form3-interview-grid">
+                        <div class="form-group">
+                            <label for="staff-relationship">&iquest;El cliente o solicitante tiene alguna relaci&oacute;n con personal de SFC VALES S.A.P.I. DE C.V. ?</label>
+                            <select id="staff-relationship" data-toggle-fields="relationship-detail"><option value="">Seleccione una opci&oacute;n</option><option value="si">Si</option><option value="no" selected>No</option></select>
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="relationship-detail" hidden>
+                            <label for="relationship-detail">Especifica la relaci&oacute;n</label>
+                            <input type="text" id="relationship-detail" placeholder="Especifica la relaci&oacute;n">
+                        </div>
+                        <div class="form-group">
+                            <label for="funds-origin">&iquest;Por favor mencione cu&aacute;l es la procedencia de los recursos con los que pagar&aacute; el cr&eacute;dito solicitado?</label>
+                            <input type="text" id="funds-origin" placeholder="&iquest;Por favor mencione cu&aacute;l es la procedencia de los recursos?">
+                        </div>
+                        <div class="form-group">
+                            <label for="credit-use">Indique el uso que pretende dar al cr&eacute;dito solicitado</label>
+                            <input type="text" id="credit-use" placeholder="Indique el uso que pretende dar al cr&eacute;dito solicitado">
+                        </div>
+                        <div class="form-group">
+                            <label for="public-functions">&iquest;Usted desempe&ntilde;a o ha desempe&ntilde;ado funciones p&uacute;blicas destacadas en un pa&iacute;s extranjero o en territorio nacional, como Funcionarios?</label>
+                            <select id="public-functions" data-toggle-fields="public-position"><option value="">Seleccione una opci&oacute;n</option><option value="si">Si</option><option value="no" selected>No</option></select>
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="public-position" hidden>
+                            <label for="public-position">Puesto</label>
+                            <input type="text" id="public-position" placeholder="Puesto">
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="public-position" hidden>
+                            <label for="public-period">Periodo</label>
+                            <input type="text" id="public-period" placeholder="Periodo">
+                        </div>
+                        <div class="form-group form3-family-question">
+                            <label for="relative-functions">&iquest;Alg&uacute;n familiar de usted hasta segundo grado de consanguinidad o afinidad (c&oacute;nyuge, concubina, concubinario, padre, madre, hijos, hermanos, abuelos, t&iacute;os, primos, cu&ntilde;ados, suegros, yernos, nueras), se encuentran en el supuesto antes mencionado?</label>
+                            <select id="relative-functions" data-toggle-fields="relative-position"><option value="">Seleccione una opci&oacute;n</option><option value="si">Si</option><option value="no" selected>No</option></select>
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="relative-position" hidden>
+                            <label for="relative-name">Nombre completo del familiar</label>
+                            <input type="text" id="relative-name" placeholder="Nombre completo del familiar">
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="relative-position" hidden>
+                            <label for="relative-relationship">Parentesco del familiar</label>
+                            <input type="text" id="relative-relationship" placeholder="Parentesco del familiar">
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="relative-position" hidden>
+                            <label for="relative-position-field">Puesto del familiar</label>
+                            <input type="text" id="relative-position-field" placeholder="Puesto del familiar">
+                        </div>
+                        <div class="form-group form3-conditional" data-conditional="relative-position" hidden>
+                            <label for="relative-period">Periodo del familiar</label>
+                            <input type="text" id="relative-period" placeholder="Periodo del familiar">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form2-section form3-declaration" aria-labelledby="declaration-title">
+                    <div class="form2-section-heading">
+                        <h3 id="declaration-title">Declaratoria del solicitante</h3>
+                    </div>
+                    <p class="form3-declaration-copy">Bajo protesta de decir verdad, manifiesto que la informaci&oacute;n asentada en y los documentos proporcionados, para la presente solicitud por el solicitante, son verdaderos, correctos y aut&eacute;nticos, as&iacute; como las manifestaciones contenidas en la misma, lo que ratifico con mi firma y/o huella dactilar asentada a continuaci&oacute;n. As&iacute; mismo, que: (i) Formulo la presente solicitud por mi propio derecho y act&uacute;o a nombre y por cuenta propia, y no act&uacute;o por cuenta de un tercero. (ii) el cr&eacute;dito ser&aacute; pagado con mis propios recursos, los cuales son y ser&aacute;n l&iacute;citos.</p>
+                    <div class="form-group form3-declaration-select">
+                        <label class="visually-hidden" for="declaration-answer">Declaratoria</label>
+                        <select id="declaration-answer"><option value="">Seleccione una opci&oacute;n</option><option selected>Si</option><option>No</option></select>
+                    </div>
+                </section>
+                </div>
+
+                <div class="form3-step-panel" data-form3-step-panel="2" hidden>
+                    <div class="form2-step-title form3-step-title">
+                        <h2>Paso 2: Aval</h2>
+                        <label class="form3-step-toggle">
+                            <span>Habilitar paso</span>
+                            <input type="checkbox" id="step-2-enabled" data-form3-step-toggle="2">
+                            <span class="form3-toggle-track" aria-hidden="true"></span>
+                        </label>
+                    </div>
+
+                    <section class="form2-section" aria-labelledby="guarantor-general-title">
+                        <div class="form2-section-heading"><h3 id="guarantor-general-title">Informaci&oacute;n general del aval</h3></div>
+                        <div class="form2-grid">
+                            <div class="form-group"><label for="guarantor-first-name">Primer nombre</label><input type="text" id="guarantor-first-name" placeholder="Primer nombre"></div>
+                            <div class="form-group"><label for="guarantor-second-name">Segundo nombre</label><input type="text" id="guarantor-second-name" placeholder="Segundo nombre" data-optional></div>
+                            <div class="form-group"><label for="guarantor-last-name">Apellido paterno</label><input type="text" id="guarantor-last-name" placeholder="Apellido paterno"></div>
+                            <div class="form-group"><label for="guarantor-mother-name">Apellido materno</label><input type="text" id="guarantor-mother-name" placeholder="Apellido materno"></div>
+                            <div class="form-group"><label for="guarantor-relationship">Parentesco</label><input type="text" id="guarantor-relationship" placeholder="Parentesco"></div>
+                            <div class="form-group"><label for="guarantor-birthdate">Fecha de nacimiento</label><input type="date" id="guarantor-birthdate"></div>
+                            <div class="form-group"><label for="guarantor-gender">G&eacute;nero</label><select id="guarantor-gender"><option value="">Seleccione una opci&oacute;n</option><option>Femenino</option><option>Masculino</option></select></div>
+                            <div class="form-group"><label for="guarantor-phone">Celular</label><input type="tel" id="guarantor-phone" placeholder="Celular"></div>
+                            <div class="form-group"><label for="guarantor-landline">Tel&eacute;fono fijo</label><input type="tel" id="guarantor-landline" placeholder="Tel&eacute;fono fijo" data-optional></div>
+                            <div class="form-group"><label for="guarantor-email">Correo electr&oacute;nico</label><input type="email" id="guarantor-email" placeholder="Correo electr&oacute;nico"></div>
+                            <div class="form-group"><label for="guarantor-rfc">RFC del prospecto</label><input type="text" id="guarantor-rfc" placeholder="RFC DEL PROSPECTO"></div>
+                            <div class="form-group"><label for="guarantor-curp">CURP</label><input type="text" id="guarantor-curp" maxlength="18" placeholder="CURP"></div>
+                            <div class="form-group"><label for="guarantor-birth-state">Entidad federativa de nacimiento</label><select id="guarantor-birth-state"><option value="">Seleccione una opci&oacute;n</option><option>Durango</option><option>Sinaloa</option></select></div>
+                            <div class="form-group"><label for="guarantor-birth-country">Pa&iacute;s de nacimiento</label><select id="guarantor-birth-country"><option value="">Seleccione una opci&oacute;n</option><option>M&eacute;xico</option></select></div>
+                            <div class="form-group"><label for="guarantor-nationality">Nacionalidad</label><select id="guarantor-nationality"><option value="">Seleccione una opci&oacute;n</option><option>Mexicana</option></select></div>
+                            <div class="form-group"><label for="guarantor-occupation">Ocupaci&oacute;n</label><select id="guarantor-occupation"><option value="">Seleccione una opci&oacute;n</option><option>Comerciante(negocio)</option><option>Empleado(a)</option><option>Hogar</option><option>Trabajador por cuenta propia</option></select></div>
+                            <div class="form-group"><label for="guarantor-activity">Actividad o giro econ&oacute;mico</label><select id="guarantor-activity"><option value="">Seleccione una opci&oacute;n</option><option>Comercio</option><option>Servicios</option></select></div>
+                            <div class="form-group"><label for="guarantor-signature">No. Serie de firma electr&oacute;nica</label><input type="text" id="guarantor-signature" placeholder="No. Serie de firma electr&oacute;nica" data-optional></div>
+                        </div>
+                    </section>
+
+                    <section class="form2-section" aria-labelledby="guarantor-address-title">
+                        <div class="form2-section-heading"><h3 id="guarantor-address-title">Domicilio del aval</h3></div>
+                        <div class="form2-grid">
+                            <div class="form-group"><label for="guarantor-street">Calle</label><input type="text" id="guarantor-street" placeholder="Calle"></div>
+                            <div class="form-group"><label for="guarantor-exterior">No. ext.</label><input type="text" id="guarantor-exterior" placeholder="No. ext."></div>
+                            <div class="form-group"><label for="guarantor-interior">No. Int.</label><input type="text" id="guarantor-interior" placeholder="No. Int." data-optional></div>
+                            <div class="form-group"><label for="guarantor-between">Entre calle</label><input type="text" id="guarantor-between" placeholder="Entre calle"></div>
+                            <div class="form-group"><label for="guarantor-and">Y calle</label><input type="text" id="guarantor-and" placeholder="Y calle"></div>
+                            <div class="form-group"><label for="guarantor-reference">Referencia</label><input type="text" id="guarantor-reference" placeholder="Referencia"></div>
+                            <div class="form-group"><label for="guarantor-postal">C.P.</label><input type="text" id="guarantor-postal" inputmode="numeric" maxlength="5" placeholder="C.P."></div>
+                            <div class="form-group"><label for="guarantor-neighborhood">Colonia</label><select id="guarantor-neighborhood"><option value="">Seleccione una opci&oacute;n</option><option>Centro</option></select></div>
+                            <div class="form-group"><label for="guarantor-municipality">Alcald&iacute;a o municipio</label><input type="text" id="guarantor-municipality" placeholder="Alcald&iacute;a o municipio"></div>
+                            <div class="form-group"><label for="guarantor-city">Ciudad</label><input type="text" id="guarantor-city" placeholder="Ciudad"></div>
+                            <div class="form-group"><label for="guarantor-state">Estado</label><input type="text" id="guarantor-state" placeholder="Estado"></div>
+                            <div class="form-group"><label for="guarantor-country">Pa&iacute;s</label><input type="text" id="guarantor-country" placeholder="Pa&iacute;s"></div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="form3-step-panel" data-form3-step-panel="3" hidden>
+                    <div class="form2-step-title form3-step-title">
+                        <h2>Paso 3: Datos socioecon&oacute;micos aval</h2>
+                        <label class="form3-step-toggle">
+                            <span>Habilitar paso</span>
+                            <input type="checkbox" id="step-3-enabled" data-form3-step-toggle="3">
+                            <span class="form3-toggle-track" aria-hidden="true"></span>
+                        </label>
+                    </div>
+
+                    <section class="form2-section" aria-labelledby="additional-guarantor-title">
+                        <div class="form2-section-heading"><h3 id="additional-guarantor-title">Informaci&oacute;n adicional del aval</h3></div>
+                        <div class="form2-grid">
+                            <div class="form-group"><label for="guarantor-civil-status">Estado civil</label><select id="guarantor-civil-status"><option value="">Seleccione una opci&oacute;n</option><option>Casado(a)</option><option>Divorciado(a)</option><option>Separado(a)</option><option>Soltero(a)</option><option>Uni&oacute;n Libre</option><option>Viudo(a)</option></select></div>
+                            <div class="form-group"><label for="guarantor-household-role">Rol en el hogar</label><select id="guarantor-household-role"><option value="">Seleccione una opci&oacute;n</option><option>Esposo(a)</option><option>Hijo(a)</option><option>Jefe(a)</option><option>Otro</option></select></div>
+                            <div class="form-group"><label for="guarantor-education">&Uacute;ltima escolaridad terminada</label><select id="guarantor-education"><option value="">Seleccione una opci&oacute;n</option><option>Ninguna</option><option>Primaria</option><option>Secundaria</option><option>T&eacute;cnica o comercial</option><option>Bachillerato</option><option>Licenciatura</option><option>Posgrado</option></select></div>
+                            <div class="form-group"><label for="guarantor-housing">Vivienda</label><select id="guarantor-housing"><option value="">Seleccione una opci&oacute;n</option><option>En proceso de compra</option><option>Familiar</option><option>Prestada</option><option>Propia</option><option>Rentada</option><option>Otro</option></select></div>
+                            <div class="form-group"><label for="guarantor-home-years">Antig&uuml;edad en el domicilio (a&ntilde;os)</label><input type="text" id="guarantor-home-years" placeholder="Antig&uuml;edad en el domicilio (a&ntilde;os)"></div>
+                            <div class="form-group"><label for="guarantor-income">Ingreso mensual</label><input type="text" id="guarantor-income" placeholder="$ 0.00"></div>
+                            <div class="form-group"><label for="guarantor-dependents">Dependientes econ&oacute;micos</label><input type="text" id="guarantor-dependents" placeholder="Dependientes econ&oacute;micos"></div>
+                        </div>
+                    </section>
+
+                    <section class="form2-section" aria-labelledby="guarantor-business-title">
+                        <div class="form2-section-heading"><h3 id="guarantor-business-title">Empresa del aval</h3></div>
+                        <div class="form2-grid">
+                            <div class="form-group"><label for="guarantor-business-name">Nombre de la empresa o negocio</label><input type="text" id="guarantor-business-name" placeholder="Nombre de la empresa o negocio"></div>
+                            <div class="form-group"><label for="guarantor-business-years">Antig&uuml;edad del negocio o empleo (a&ntilde;os)</label><input type="text" id="guarantor-business-years" placeholder="Antig&uuml;edad del negocio o empleo (a&ntilde;os)"></div>
+                            <div class="form-group"><label for="guarantor-business-phone">Tel&eacute;fono del negocio/trabajo</label><input type="tel" id="guarantor-business-phone" placeholder="Tel&eacute;fono del negocio/trabajo"></div>
+                        </div>
+                    </section>
+
+                    <section class="form2-section" aria-labelledby="guarantor-business-address-title">
+                        <div class="form2-section-heading"><h3 id="guarantor-business-address-title">Domicilio de la empresa del aval</h3></div>
+                        <div class="form2-grid">
+                            <div class="form-group"><label for="guarantor-business-street">Calle</label><input type="text" id="guarantor-business-street" placeholder="Calle"></div>
+                            <div class="form-group"><label for="guarantor-business-exterior">No. ext.</label><input type="text" id="guarantor-business-exterior" placeholder="No. ext."></div>
+                            <div class="form-group"><label for="guarantor-business-interior">No. Int.</label><input type="text" id="guarantor-business-interior" placeholder="No. Int." data-optional></div>
+                            <div class="form-group"><label for="guarantor-business-between">Entre calle</label><input type="text" id="guarantor-business-between" placeholder="Entre calle"></div>
+                            <div class="form-group"><label for="guarantor-business-and">Y calle</label><input type="text" id="guarantor-business-and" placeholder="Y calle"></div>
+                            <div class="form-group"><label for="guarantor-business-reference">Referencia</label><input type="text" id="guarantor-business-reference" placeholder="Referencia"></div>
+                            <div class="form-group"><label for="guarantor-business-postal">C.P.</label><input type="text" id="guarantor-business-postal" inputmode="numeric" maxlength="5" placeholder="C.P."></div>
+                            <div class="form-group"><label for="guarantor-business-neighborhood">Colonia</label><select id="guarantor-business-neighborhood"><option value="">Seleccione una opci&oacute;n</option><option>Centro</option></select></div>
+                            <div class="form-group"><label for="guarantor-business-municipality">Alcald&iacute;a o municipio</label><input type="text" id="guarantor-business-municipality" placeholder="Alcald&iacute;a o municipio"></div>
+                            <div class="form-group"><label for="guarantor-business-city">Ciudad</label><input type="text" id="guarantor-business-city" placeholder="Ciudad"></div>
+                            <div class="form-group"><label for="guarantor-business-state">Estado</label><input type="text" id="guarantor-business-state" placeholder="Estado"></div>
+                            <div class="form-group"><label for="guarantor-business-country">Pa&iacute;s</label><input type="text" id="guarantor-business-country" placeholder="Pa&iacute;s"></div>
+                        </div>
+                    </section>
+
+                    <section class="form2-section form3-documents form3-document-list" aria-labelledby="guarantor-documents-title">
+                        <div class="form2-section-heading"><h3 id="guarantor-documents-title">Documentos del aval</h3></div>
+                        <div class="document-card document-card-inline" data-form3-document="guarantor-ine-front" data-document-label="Identificación oficial - INE frente">
+                            <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Identificaci&oacute;n oficial - INE frente</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir INE frente">
+                        </div>
+                        <div class="document-card document-card-inline" data-form3-document="guarantor-ine-back" data-document-label="Identificación oficial - INE reverso">
+                            <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Identificaci&oacute;n oficial - INE reverso</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir INE reverso">
+                        </div>
+                        <div class="document-card document-card-inline" data-form3-document="guarantor-income-proof" data-document-label="Comprobante de ingresos del aval">
+                            <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Comprobante de ingresos (no mayor a 3 meses de antig&uuml;edad)</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir comprobante de ingresos del aval">
+                        </div>
+                    </section>
+
+                    <section class="form2-section form3-declaration" aria-labelledby="guarantor-declaration-title">
+                        <div class="form2-section-heading"><h3 id="guarantor-declaration-title">Declaratoria del aval</h3></div>
+                        <p class="form3-declaration-copy">Bajo protesta de decir verdad, manifiesto que la informaci&oacute;n asentada en y los documentos proporcionados, para la presente solicitud por el solicitante, son verdaderos, correctos y aut&eacute;nticos, as&iacute; como las manifestaciones contenidas en la misma, lo que ratifico con mi firma y/o huella dactilar asentada a continuaci&oacute;n. As&iacute; mismo, que: (i) Formulo la presente solicitud por mi propio derecho y act&uacute;o a nombre y por cuenta propia, y no act&uacute;o por cuenta de un tercero. (ii) el cr&eacute;dito ser&aacute; pagado con mis propios recursos, los cuales son y ser&aacute;n l&iacute;citos.</p>
+                        <div class="form-group form3-declaration-select"><label class="visually-hidden" for="guarantor-declaration-answer">Declaratoria del aval</label><select id="guarantor-declaration-answer"><option value="">Seleccione una opci&oacute;n</option><option>Si</option><option>No</option></select></div>
+                    </section>
+                </div>
+
+                <div class="form3-step-panel" data-form3-step-panel="4" hidden>
+                    <div class="form2-step-title form3-step-title">
+                        <h2>Paso 4: Garant&iacute;a</h2>
+                        <label class="form3-step-toggle">
+                            <span>Habilitar paso</span>
+                            <input type="checkbox" id="step-4-enabled" data-form3-step-toggle="4">
+                            <span class="form3-toggle-track" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                    <section class="form2-section" aria-labelledby="guarantee-detail-title">
+                        <div class="form2-section-heading"><h3 id="guarantee-detail-title">Detalle de la garant&iacute;a</h3></div>
+                        <div class="form2-grid">
+                            <div class="form-group"><label for="guarantee-type">Tipo de garant&iacute;a</label><select id="guarantee-type"><option value="">Seleccione una opci&oacute;n</option><option>Inmobiliaria</option><option>Prendaria</option></select></div>
+                            <div class="form-group"><label for="guarantee-description">Descripci&oacute;n de la garant&iacute;a</label><input type="text" id="guarantee-description" placeholder="Descripci&oacute;n de la garant&iacute;a"></div>
+                            <div class="form-group"><label for="guarantee-amount">Monto aproximado de la garant&iacute;a</label><input type="text" id="guarantee-amount" placeholder="$ 0.00"></div>
+                        </div>
+                    </section>
+                    <section class="form2-section form3-documents form3-document-list" aria-label="Documentos de la garantía">
+                        <div class="document-card document-card-inline" data-form3-document="property-proof" data-document-label="Documento que acredita la propiedad de la garantía">
+                            <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Documento que acredita la propiedad de la garant&iacute;a</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir documento de propiedad">
+                        </div>
+                        <div class="document-card document-card-inline" data-form3-document="marriage-certificate" data-document-label="Acta de Matrimonio">
+                            <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Acta de Matrimonio</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir acta de matrimonio">
+                        </div>
+                    </section>
+                </div>
+            </form>
+        </div>
+
+        <section class="practice-result form3-result" data-form3-result hidden aria-live="polite"></section>
+
+        <div class="form2-bottom-bar form3-bottom-bar" aria-label="Estado y acciones del formulario">
+            <button type="button" class="btn-secondary form3-back" data-form3-back hidden>Regresar</button>
+            <div class="form2-bottom-status">
+                <strong>Informaci&oacute;n actualizada</strong>
+                <span>&Uacute;ltima actualizaci&oacute;n: 26/05/2026 10:23 pm</span>
+            </div>
+            <button type="button" class="btn-primary" data-form3-next>Continuar</button>
+        </div>
+    </main>
+
+    <div class="form2-modal form3-record-modal" data-record-modal hidden>
+        <div class="form2-modal-backdrop" data-record-close></div>
+        <section class="form2-modal-panel form3-record-panel" role="dialog" aria-modal="true" aria-labelledby="record-modal-title">
+            <button type="button" class="form2-modal-close" data-record-close aria-label="Cerrar">&times;</button>
+            <h2 id="record-modal-title">Agrega la siguiente informaci&oacute;n</h2>
+            <div class="form3-record-heading">
+                <h3 data-record-modal-section></h3>
+            </div>
+            <form class="form3-record-form" data-record-form novalidate>
+                <div class="form2-grid" data-record-fields></div>
+                <div class="form3-record-divider"></div>
+                <div class="form3-record-actions">
+                    <button type="submit" class="btn-primary" data-record-submit>Agregar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <div class="form2-modal form3-delete-modal" data-delete-modal hidden>
+        <div class="form2-modal-backdrop" data-delete-close></div>
+        <section class="form2-modal-panel form3-delete-panel" role="dialog" aria-modal="true" aria-labelledby="delete-modal-title">
+            <button type="button" class="form2-modal-close" data-delete-close aria-label="Cerrar">&times;</button>
+            <h2 id="delete-modal-title">Eliminar</h2>
+            <div class="form3-delete-content">
+                <span class="form3-warning-icon" aria-hidden="true">!</span>
+                <p>&iquest;Est&aacute;s seguro de que deseas eliminar?</p>
+                <button type="button" class="btn-primary" data-delete-confirm>Eliminar</button>
+            </div>
+        </section>
+    </div>
+
+    <div class="form2-modal form3-preview-modal" data-form3-preview-modal hidden>
+        <div class="form2-modal-backdrop" data-form3-preview-close></div>
+        <section class="form2-modal-panel form2-preview-panel" role="dialog" aria-modal="true" aria-labelledby="form3-preview-title">
+            <button type="button" class="form2-modal-close" data-form3-preview-close aria-label="Cerrar">&times;</button>
+            <h2 id="form3-preview-title" data-form3-preview-title>Documento cargado</h2>
+            <div class="file-preview file-preview-large" data-form3-preview-content></div>
+            <div class="form2-modal-actions"><button type="button" class="btn-outline" data-form3-preview-close>Cerrar</button></div>
+        </section>
+    </div>
+
+    <footer class="page-footer">
+        <div class="footer-logo-placeholder">
+            <img src="../assets/images/conmigo_logo_footer.png" alt="Conmigo">
+        </div>
+        <p>Ambiente de pr&aacute;ctica &middot; La informaci&oacute;n no se almacena ni se env&iacute;a a sistemas productivos.</p>
+    </footer>
+    <script src="../js/form-3.js"></script>
+</body>
+</html>

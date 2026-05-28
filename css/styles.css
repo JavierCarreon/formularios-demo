@@ -1949,6 +1949,10 @@ button {
     margin-top: 0.45rem;
 }
 
+.form3-practice-section {
+    margin-bottom: 2.55rem;
+}
+
 .form3-shell {
     grid-template-columns: 270px minmax(0, 1fr);
     gap: 3.2rem;
@@ -2011,6 +2015,24 @@ button {
     background-color: #250006;
 }
 
+.form3-process .form3-step.is-complete {
+    color: #c7c7cc;
+}
+
+.form3-process .form3-step.is-complete .stepper-dot {
+    background-color: #66cf99;
+}
+
+.form3-process .form3-step.is-complete .stepper-dot::before {
+    content: "\2713";
+    color: #ffffff;
+}
+
+.form3-step-panel[hidden],
+.form3-result[hidden] {
+    display: none !important;
+}
+
 .form3-table-section {
     margin-bottom: 2.7rem;
 }
@@ -2069,7 +2091,40 @@ button {
     text-align: center;
 }
 
+.form3-table tbody tr.has-record td {
+    padding-top: 0.72rem;
+    padding-bottom: 0.72rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #414149;
+    font-style: normal;
+    text-align: left;
+}
+
+.form3-row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0.35rem;
+}
+
+.form3-row-action {
+    border: 0;
+    background: transparent;
+    color: #595966;
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.form3-spouse[hidden] {
+    display: none !important;
+}
+
 .form3-documents .document-card {
+    margin-top: 1.35rem;
+}
+
+.form3-document-list .document-card + .document-card {
     margin-top: 1.35rem;
 }
 
@@ -2117,16 +2172,357 @@ button {
 }
 
 .form3-bottom-bar {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     margin-top: 2.75rem;
+}
+
+.form3-back {
+    min-width: 168px;
+}
+
+.form3-back.is-placeholder {
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .form3-bottom-bar .form2-bottom-status {
     justify-self: center;
+    text-align: center;
 }
 
 .form3-bottom-bar .btn-primary {
+    width: 168px;
     min-width: 168px;
+    justify-self: end;
+}
+
+.form3-result {
+    max-width: 1120px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form3-result-summary {
+    margin-bottom: 1.3rem;
+}
+
+.form3-general-note {
+    margin-top: 0.7rem;
+    color: #606067;
+    font-size: 0.92rem;
+}
+
+.form3-result-tabs {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 1.2rem;
+    overflow-x: auto;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.form3-result-tab {
+    min-width: 112px;
+    padding: 0.75rem 1rem;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    color: #6b7280;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.form3-result-tab.is-active {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.form3-result-panel[hidden] {
+    display: none !important;
+}
+
+.form3-result-step-title {
+    margin: 1rem 0 0.85rem;
+    color: #45454d;
+    font-size: 1.12rem;
+    font-weight: 600;
+}
+
+.form3-step-note {
+    margin: 1rem 0 0;
+    color: #606067;
+    font-size: 0.94rem;
+    line-height: 1.45;
+}
+
+.form3-result-panel .result-lists {
+    margin-top: 1rem;
+}
+
+.form3-result-panel .result-lists > div {
+    max-height: 218px;
+    overflow-y: auto;
+}
+
+.form3-preview-modal .file-preview-large {
+    min-height: 280px;
+}
+
+.form3-record-panel {
+    width: min(1120px, calc(100vw - 3rem));
+    max-width: 1120px;
+    padding: 2.1rem 2.2rem;
+}
+
+.form3-record-modal,
+.form3-delete-modal,
+.form3-preview-modal {
+    z-index: 1200;
+}
+
+.form3-record-panel > h2,
+.form3-delete-panel > h2 {
+    margin-bottom: 1.35rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #4b4b52;
+    font-size: 1.55rem;
+    font-weight: 500;
+}
+
+.form3-record-heading h3 {
+    margin-bottom: 1.1rem;
+    color: #44444b;
+    font-size: 1.22rem;
+    font-weight: 600;
+}
+
+.form3-record-form .form2-grid {
+    gap: 1.35rem 1.7rem;
+}
+
+.form3-record-divider {
+    margin-top: 1.65rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.form3-record-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1.75rem;
+}
+
+.form3-record-actions .btn-primary {
+    min-width: 170px;
+}
+
+.form3-record-document {
+    margin-top: 1.6rem;
+}
+
+.form3-record-documents {
+    display: grid;
+    gap: 1.35rem;
+    margin-top: 1.6rem;
+}
+
+.form3-record-documents .form3-record-document {
+    margin-top: 0;
+}
+
+.form3-step-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.form3-step-toggle {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.65rem;
+    color: #55555d;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+}
+
+.form3-step-toggle input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.form3-toggle-track {
+    position: relative;
+    width: 48px;
+    height: 26px;
+    border-radius: 999px;
+    background: #d1d5db;
+    transition: background-color 0.2s ease;
+}
+
+.form3-toggle-track::after {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    content: "";
+    transition: transform 0.2s ease;
+}
+
+.form3-step-toggle input:checked + .form3-toggle-track {
+    background: var(--color-primary);
+}
+
+.form3-step-toggle input:checked + .form3-toggle-track::after {
+    transform: translateX(22px);
+}
+
+.form3-step-panel.form3-step-disabled input,
+.form3-step-panel.form3-step-disabled select,
+.form3-step-panel.form3-step-disabled button:not([data-form3-step-toggle]) {
+    cursor: not-allowed;
+}
+
+.form3-delete-panel {
+    width: min(710px, calc(100vw - 3rem));
+    max-width: 710px;
+    padding: 2rem;
+}
+
+.form3-delete-content {
+    display: grid;
+    justify-items: center;
+    gap: 1.4rem;
+    padding: 1.4rem 0 0.5rem;
+    text-align: center;
+}
+
+.form3-warning-icon {
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border-radius: 50%;
+    background: #fac446;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.form3-delete-content p {
+    color: #66666d;
+    font-size: 1.42rem;
+    font-weight: 600;
+}
+
+.form3-delete-content .btn-primary {
+    min-width: 170px;
+}
+
+.form3-page.is-result .form3-shell,
+.form3-page.is-result .form3-bottom-bar,
+.form3-page.is-result .form3-practice-section {
+    display: none;
+}
+
+@media print {
+    body.is-printing-form3 .page-header,
+    body.is-printing-form3 .page-footer,
+    body.is-printing-form3 .form3-hero,
+    body.is-printing-form3 .form3-practice-section,
+    body.is-printing-form3 .form3-shell,
+    body.is-printing-form3 .form3-bottom-bar,
+    body.is-printing-form3 .form2-modal,
+    body.is-printing-form3 .form3-result-tabs,
+    body.is-printing-form3 .btn-print {
+        display: none !important;
+    }
+
+    body.is-printing-form3 {
+        overflow: visible !important;
+        color: #222228 !important;
+        font-size: 16pt !important;
+        line-height: 1.5 !important;
+    }
+
+    body.is-printing-form3 .form3-result,
+    body.is-printing-form3 .form3-result-panel {
+        display: block !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        box-shadow: none !important;
+    }
+
+    body.is-printing-form3 .form3-result {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0.35in !important;
+    }
+
+    body.is-printing-form3 .form3-result-summary h2 {
+        font-size: 28pt !important;
+    }
+
+    body.is-printing-form3 .form3-result-summary p,
+    body.is-printing-form3 .form3-general-note,
+    body.is-printing-form3 .form3-step-note,
+    body.is-printing-form3 .result-recommendation {
+        font-size: 15pt !important;
+    }
+
+    body.is-printing-form3 .result-grid {
+        gap: 0.22in !important;
+    }
+
+    body.is-printing-form3 .result-grid div {
+        padding: 0.2in !important;
+    }
+
+    body.is-printing-form3 .result-grid strong {
+        font-size: 13pt !important;
+    }
+
+    body.is-printing-form3 .result-grid span {
+        font-size: 20pt !important;
+    }
+
+    body.is-printing-form3 .form3-result-step-title {
+        font-size: 22pt !important;
+    }
+
+    body.is-printing-form3 .result-lists h3 {
+        font-size: 17pt !important;
+    }
+
+    body.is-printing-form3 .result-lists li,
+    body.is-printing-form3 .result-lists p {
+        font-size: 15pt !important;
+        line-height: 1.5 !important;
+    }
+
+    body.is-printing-form3 .form3-result-panel {
+        margin-top: 0.28in;
+        break-inside: avoid;
+    }
+
+    body.is-printing-form3 .form3-result-panel .result-lists > div {
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
 }
 
 @media (max-width: 1023px) {
@@ -2147,6 +2543,8 @@ button {
 
     .form3-step-title {
         margin-bottom: 1.6rem;
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .form3-step-title h2 {
@@ -2171,15 +2569,43 @@ button {
         font-size: 0.96rem;
     }
 
+    .form3-record-panel,
+    .form3-delete-panel {
+        width: calc(100vw - 1.5rem);
+        padding: 1.35rem 1rem;
+    }
+
     .form3-bottom-bar {
-        grid-template-columns: 1fr;
+        grid-template-columns: auto 1fr auto;
     }
 
     .form3-bottom-bar .btn-primary {
-        grid-column: 1;
         width: 170px;
         max-width: none;
         justify-self: end;
+    }
+
+    .form3-back {
+        width: 150px;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    .form3-bottom-bar {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+    }
+
+    .form3-bottom-bar .form2-bottom-status {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .form3-back,
+    .form3-bottom-bar .btn-primary {
+        grid-row: 2;
+        width: 100%;
     }
 }
 
