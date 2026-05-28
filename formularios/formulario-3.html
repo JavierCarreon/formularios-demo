@@ -185,7 +185,7 @@
                     <div class="form2-grid">
                         <div class="form-group"><label for="economic-street">Calle</label><input type="text" id="economic-street" placeholder="Calle"></div>
                         <div class="form-group"><label for="economic-exterior">No. ext.</label><input type="text" id="economic-exterior" placeholder="No. ext."></div>
-                        <div class="form-group"><label for="economic-interior">No. Int.</label><input type="text" id="economic-interior" placeholder="No. Int."></div>
+                        <div class="form-group"><label for="economic-interior">No. Int.</label><input type="text" id="economic-interior" placeholder="No. Int." data-optional></div>
                         <div class="form-group"><label for="economic-between">Entre calle</label><input type="text" id="economic-between" placeholder="Entre calle"></div>
                         <div class="form-group"><label for="economic-and">Y calle</label><input type="text" id="economic-and" placeholder="Y calle"></div>
                         <div class="form-group"><label for="economic-reference">Referencia</label><input type="text" id="economic-reference" placeholder="Referencia"></div>
@@ -252,7 +252,7 @@
                         <div class="form-group"><label for="spouse-second-name">Segundo nombre</label><input type="text" id="spouse-second-name" placeholder="Segundo nombre" data-optional></div>
                         <div class="form-group"><label for="spouse-last-name">Apellido paterno</label><input type="text" id="spouse-last-name" placeholder="Apellido paterno"></div>
                         <div class="form-group"><label for="spouse-mother-name">Apellido materno</label><input type="text" id="spouse-mother-name" placeholder="Apellido materno"></div>
-                        <div class="form-group"><label for="spouse-gender">G&eacute;nero</label><select id="spouse-gender"><option value="">Seleccione una opci&oacute;n</option><option>Femenino</option><option>Masculino</option><option>Otro</option></select></div>
+                        <div class="form-group"><label for="spouse-gender">G&eacute;nero</label><select id="spouse-gender"><option value="">Seleccione una opci&oacute;n</option><option>Femenino</option><option>Masculino</option></select></div>
                         <div class="form-group"><label for="spouse-birth-state">Entidad federativa de nacimiento</label><select id="spouse-birth-state"><option value="">Seleccione una opci&oacute;n</option><option>Durango</option><option>Sinaloa</option></select></div>
                         <div class="form-group"><label for="spouse-birth-country">Pa&iacute;s de nacimiento</label><select id="spouse-birth-country"><option value="">Seleccione una opci&oacute;n</option><option>M&eacute;xico</option></select></div>
                         <div class="form-group"><label for="spouse-nationality">Nacionalidad</label><select id="spouse-nationality"><option value="">Seleccione una opci&oacute;n</option><option>Mexicana</option></select></div>
@@ -447,11 +447,6 @@
                 <div class="form3-step-panel" data-form3-step-panel="3" hidden>
                     <div class="form2-step-title form3-step-title">
                         <h2>Paso 3: Datos socioecon&oacute;micos aval</h2>
-                        <label class="form3-step-toggle">
-                            <span>Habilitar paso</span>
-                            <input type="checkbox" id="step-3-enabled" data-form3-step-toggle="3">
-                            <span class="form3-toggle-track" aria-hidden="true"></span>
-                        </label>
                     </div>
 
                     <section class="form2-section" aria-labelledby="additional-guarantor-title">
@@ -467,7 +462,7 @@
                         </div>
                     </section>
 
-                    <section class="form2-section" aria-labelledby="guarantor-business-title">
+                    <section class="form2-section" aria-labelledby="guarantor-business-title" data-optional-section="Empresa del aval">
                         <div class="form2-section-heading"><h3 id="guarantor-business-title">Empresa del aval</h3></div>
                         <div class="form2-grid">
                             <div class="form-group"><label for="guarantor-business-name">Nombre de la empresa o negocio</label><input type="text" id="guarantor-business-name" placeholder="Nombre de la empresa o negocio"></div>
@@ -476,7 +471,7 @@
                         </div>
                     </section>
 
-                    <section class="form2-section" aria-labelledby="guarantor-business-address-title">
+                    <section class="form2-section" aria-labelledby="guarantor-business-address-title" data-optional-section="Domicilio de la empresa del aval">
                         <div class="form2-section-heading"><h3 id="guarantor-business-address-title">Domicilio de la empresa del aval</h3></div>
                         <div class="form2-grid">
                             <div class="form-group"><label for="guarantor-business-street">Calle</label><input type="text" id="guarantor-business-street" placeholder="Calle"></div>
@@ -532,10 +527,10 @@
                         </div>
                     </section>
                     <section class="form2-section form3-documents form3-document-list" aria-label="Documentos de la garantía">
-                        <div class="document-card document-card-inline" data-form3-document="property-proof" data-document-label="Documento que acredita la propiedad de la garantía">
+                        <div class="document-card document-card-inline" data-form3-document="property-proof" data-document-label="Documento que acredita la propiedad de la garantía" data-optional-document>
                             <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Documento que acredita la propiedad de la garant&iacute;a</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir documento de propiedad">
                         </div>
-                        <div class="document-card document-card-inline" data-form3-document="marriage-certificate" data-document-label="Acta de Matrimonio">
+                        <div class="document-card document-card-inline" data-form3-document="marriage-certificate" data-document-label="Acta de Matrimonio" data-optional-document>
                             <div class="document-icon" aria-hidden="true">DOC</div><div class="document-copy"><h4>Acta de Matrimonio</h4><button type="button" class="document-link" data-document-view hidden>Ver documento</button></div><span class="document-status is-pending" data-document-status>Documento pendiente</span><button type="button" class="btn-outline" data-document-upload>Subir</button><input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-document-file aria-label="Subir acta de matrimonio">
                         </div>
                     </section>

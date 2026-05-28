@@ -86,6 +86,13 @@ function setupInputLimits() {
                 input.value = input.value.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().slice(0, input.maxLength);
             });
         }
+
+        if (isNumericField(input)) {
+            input.inputMode = 'numeric';
+            input.addEventListener('input', function () {
+                input.value = input.value.replace(/\D/g, '');
+            });
+        }
     });
 }
 
@@ -411,11 +418,21 @@ function setupOptionalSteps(state) {
 
         toggle.addEventListener('change', function () {
             state.optionalSteps[step] = toggle.checked;
+            if (step === 2) {
+                state.optionalSteps[3] = toggle.checked;
+                applyOptionalStepState(3, state);
+            }
             applyOptionalStepState(step, state);
         });
 
         applyOptionalStepState(step, state);
     });
+
+    var step2Toggle = document.querySelector('[data-form3-step-toggle="2"]');
+    if (step2Toggle) {
+        state.optionalSteps[3] = step2Toggle.checked;
+        applyOptionalStepState(3, state);
+    }
 }
 
 function applyOptionalStepState(step, state) {
@@ -557,7 +574,7 @@ var recordDefinitions = {
             { key: 'motherName', label: 'Apellido materno', required: true },
             { key: 'relationship', label: 'Parentesco', required: true },
             { key: 'birthdate', label: 'Fecha de nacimiento', type: 'date' },
-            { key: 'percentage', label: 'Porcentaje', placeholder: 'Porcentaje' }
+            { key: 'percentage', label: 'Porcentaje', placeholder: 'Porcentaje', type: 'number', max: 100, required: true }
         ],
         columns: ['firstName', 'secondName', 'lastName', 'motherName']
     },
@@ -597,6 +614,21 @@ var recordTableRules = {
         missingMessage: 'Debes capturar al menos 1 coasegurado completo.'
     }
 };
+
+['distributorExperience', 'catalogExperience'].forEach(function (type) {
+    var seniority = recordDefinitions[type].fields.find(function (field) {
+        return field.key === 'seniority';
+    });
+    if (seniority) {
+        seniority.type = 'number';
+    }
+});
+
+recordDefinitions.coinsured.fields.forEach(function (field) {
+    if (field.key === 'relationship') {
+        field.options = ['PAREJA', 'HIJO'];
+    }
+});
 
 function setupRecordTables(state) {
     document.querySelectorAll('[data-open-record]').forEach(function (button) {
@@ -656,13 +688,20 @@ function openRecordModal(type, index, state) {
             input.value = input.value.replace(/\D/g, '').slice(0, 10);
         });
     });
+    fields.querySelectorAll('input[data-record-number], input[data-record-max]').forEach(function (input) {
+        input.addEventListener('input', function () {
+            input.value = input.value.replace(/\D/g, '');
+            validateRecordPercentage(fields, submit);
+        });
+    });
+    validateRecordPercentage(fields, submit);
 
     if (type === 'distributorExperience') {
         fields.insertAdjacentHTML('afterend', buildActivityDocuments(record.ticketFiles || {}));
-        bindRecordDocumentInputs();
+        bindRecordDocumentInputs(record.ticketFiles || {});
     } else if (type === 'catalogExperience') {
-        fields.insertAdjacentHTML('afterend', buildActivityDocument(record.activityProof || ''));
-        bindRecordDocumentInputs();
+        fields.insertAdjacentHTML('afterend', buildActivityDocument(record.activityProof || []));
+        bindRecordDocumentInputs({ activityProof: record.activityProof || [] });
     }
 
     modal.hidden = false;
@@ -685,21 +724,45 @@ function renderRecordField(field, value) {
     if (field.type === 'tel') {
         attributes = ' inputmode="numeric" maxlength="10"';
     }
+    if (field.type === 'number') {
+        attributes = ' inputmode="numeric" data-record-number="true"' + (field.max ? ' data-record-max="' + field.max + '"' : '');
+    }
 
     return '<div class="form-group"><label for="' + id + '">' + field.label + required + '</label><input type="' +
-        (field.type || 'text') + '" id="' + id + '" data-record-field="' + field.key + '" value="' + safeValue + '"' + attributes +
-        '" placeholder="' + escapeHtml(field.placeholder || field.label) + '"></div>';
+        (field.type === 'number' ? 'text' : (field.type || 'text')) + '" id="' + id + '" data-record-field="' + field.key + '" value="' + safeValue + '"' + attributes +
+        '" placeholder="' + escapeHtml(field.placeholder || field.label) + '">' +
+        (field.max ? '<p class="field-error" data-record-field-error="' + field.key + '" hidden>El porcentaje no puede exceder el 100%.</p>' : '') +
+        '</div>';
 }
 
-function buildActivityDocument(fileName) {
+function validateRecordPercentage(container, submit) {
+    var input = container && container.querySelector('[data-record-field="percentage"]');
+    var error = container && container.querySelector('[data-record-field-error="percentage"]');
+    var invalid = input && input.value && Number(input.value) > 100;
+
+    if (error) {
+        error.hidden = !invalid;
+    }
+    if (input) {
+        input.classList.toggle('field-invalid', !!invalid);
+        input.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+    }
+    if (submit) {
+        submit.disabled = !!invalid;
+    }
+}
+
+function buildActivityDocument(files) {
+    var fileList = normalizeRecordFiles(files);
+    var hasFiles = fileList.length > 0;
     return '<div class="document-card document-card-inline form3-record-document" data-record-document="activityProof">' +
         '<div class="document-icon" aria-hidden="true">DOC</div>' +
         '<div class="document-copy"><h4>Comprobante de actividad</h4><p data-record-document-name>' +
-        (fileName ? escapeHtml(fileName) : '') + '</p></div>' +
-        '<span class="document-status ' + (fileName ? 'is-loaded' : 'is-pending') + '" data-record-document-status>' +
-        (fileName ? 'Documento cargado' : 'Documento pendiente') + '</span>' +
-        '<button type="button" class="btn-outline" data-record-document-upload>' + (fileName ? 'Volver a subir' : 'Subir') + '</button>' +
-        '<input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-record-document-file>' +
+        escapeHtml(formatRecordFileNames(fileList)) + '</p><button type="button" class="document-link" data-record-document-view' + (hasFiles ? '' : ' hidden') + '>Ver documento</button></div>' +
+        '<span class="document-status ' + (hasFiles ? 'is-loaded' : 'is-pending') + '" data-record-document-status>' +
+        (hasFiles ? 'Documento cargado' : 'Documento pendiente') + '</span>' +
+        '<button type="button" class="btn-outline" data-record-document-upload>' + (hasFiles ? 'Volver a subir' : 'Subir') + '</button>' +
+        '<input type="file" class="visually-hidden" multiple accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-record-document-file>' +
         '</div>';
 }
 
@@ -707,46 +770,109 @@ function buildActivityDocuments(files) {
     return '<div class="form3-record-documents" data-record-documents>' +
         [1, 2, 3].map(function (index) {
             var key = 'ticket' + index;
-            var fileName = files && files[key] ? files[key] : '';
+            var fileList = normalizeRecordFiles(files && files[key]);
+            var hasFiles = fileList.length > 0;
             return '<div class="document-card document-card-inline form3-record-document" data-record-document="' + key + '">' +
                 '<div class="document-icon" aria-hidden="true">DOC</div>' +
                 '<div class="document-copy"><h4>Relación y ticket ' + index + '</h4><p data-record-document-name>' +
-                (fileName ? escapeHtml(fileName) : '') + '</p></div>' +
-                '<span class="document-status ' + (fileName ? 'is-loaded' : 'is-pending') + '" data-record-document-status>' +
-                (fileName ? 'Documento cargado' : 'Documento pendiente') + '</span>' +
-                '<button type="button" class="btn-outline" data-record-document-upload>' + (fileName ? 'Volver a subir' : 'Subir') + '</button>' +
-                '<input type="file" class="visually-hidden" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-record-document-file>' +
+                escapeHtml(formatRecordFileNames(fileList)) + '</p><button type="button" class="document-link" data-record-document-view' + (hasFiles ? '' : ' hidden') + '>Ver documento</button></div>' +
+                '<span class="document-status ' + (hasFiles ? 'is-loaded' : 'is-pending') + '" data-record-document-status>' +
+                (hasFiles ? 'Documento cargado' : 'Documento pendiente') + '</span>' +
+                '<button type="button" class="btn-outline" data-record-document-upload>' + (hasFiles ? 'Volver a subir' : 'Subir') + '</button>' +
+                '<input type="file" class="visually-hidden" multiple accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" data-record-document-file>' +
                 '</div>';
         }).join('') +
         '</div>';
 }
 
-function bindRecordDocumentInputs() {
+function bindRecordDocumentInputs(existingFiles) {
     document.querySelectorAll('[data-record-document]').forEach(function (card) {
         var upload = card && card.querySelector('[data-record-document-upload]');
         var input = card && card.querySelector('[data-record-document-file]');
+        var view = card && card.querySelector('[data-record-document-view]');
+        var key = card && card.dataset.recordDocument;
 
         if (!upload || !input) {
             return;
         }
 
+        card._recordFiles = normalizeRecordFiles(existingFiles && existingFiles[key]);
         upload.addEventListener('click', function () {
             input.click();
         });
         input.addEventListener('change', function () {
-            var file = input.files && input.files[0];
+            var files = Array.prototype.slice.call(input.files || []).filter(isAllowedDocument);
             var name = card.querySelector('[data-record-document-name]');
             var status = card.querySelector('[data-record-document-status]');
-            if (!file || !isAllowedDocument(file)) {
+            if (!files.length) {
                 return;
             }
-            card.dataset.fileName = file.name;
-            name.textContent = file.name;
+            card._recordFiles = files.map(function (file) {
+                return {
+                    file: file,
+                    name: file.name,
+                    url: URL.createObjectURL(file)
+                };
+            });
+            name.textContent = formatRecordFileNames(card._recordFiles);
             status.textContent = 'Documento cargado';
             status.classList.remove('is-pending');
             status.classList.add('is-loaded');
             upload.textContent = 'Volver a subir';
+            if (view) {
+                view.hidden = false;
+            }
         });
+        if (view) {
+            view.addEventListener('click', function () {
+                openRecordDocumentPreview(card._recordFiles || [], card.querySelector('h4').textContent);
+            });
+        }
+    });
+}
+
+function normalizeRecordFiles(value) {
+    if (!value) {
+        return [];
+    }
+    if (Array.isArray(value)) {
+        return value.filter(function (item) {
+            return item && (item.name || item.file);
+        });
+    }
+    if (typeof value === 'string') {
+        return value ? [{ name: value }] : [];
+    }
+    if (value.name || value.file) {
+        return [value];
+    }
+    return [];
+}
+
+function formatRecordFileNames(files) {
+    var list = normalizeRecordFiles(files);
+    if (!list.length) {
+        return '';
+    }
+    return list[0].name + (list.length > 1 ? ' +' + (list.length - 1) + ' archivo(s)' : '');
+}
+
+function hasRecordFiles(files) {
+    return normalizeRecordFiles(files).length > 0;
+}
+
+function openRecordDocumentPreview(files, label) {
+    var fileList = normalizeRecordFiles(files);
+    var first = fileList[0];
+
+    if (!first) {
+        return;
+    }
+
+    openDocumentPreview({
+        label: label,
+        file: first.file || { name: first.name, type: '' },
+        url: first.url || ''
     });
 }
 
@@ -760,6 +886,11 @@ function saveRecord(state) {
         return;
     }
 
+    if (modal.querySelector('[data-record-field="percentage"]') &&
+        Number(modal.querySelector('[data-record-field="percentage"]').value || 0) > 100) {
+        return;
+    }
+
     modal.querySelectorAll('[data-record-field]').forEach(function (field) {
         record[field.dataset.recordField] = field.value.trim();
     });
@@ -768,13 +899,13 @@ function saveRecord(state) {
         record.ticketFiles = {};
         modal.querySelectorAll('[data-record-document]').forEach(function (documentCard) {
             var key = documentCard.dataset.recordDocument;
-            record.ticketFiles[key] = documentCard.dataset.fileName || previousTickets[key] || '';
+            record.ticketFiles[key] = normalizeRecordFiles(documentCard._recordFiles || previousTickets[key]);
         });
     } else {
         var documentCard = modal.querySelector('[data-record-document]');
         if (documentCard) {
-            record.activityProof = documentCard.dataset.fileName ||
-                (editing.index === null ? '' : state.records[editing.type][editing.index].activityProof || '');
+            record.activityProof = normalizeRecordFiles(documentCard._recordFiles ||
+                (editing.index === null ? [] : state.records[editing.type][editing.index].activityProof || []));
         }
     }
 
@@ -971,6 +1102,10 @@ function renderFeedback(state) {
         return getStepMetrics(step, state);
     });
     var totals = combineMetrics(allMetrics);
+    var correctPercent = totals.total ? Math.round(totals.correct / totals.total * 100) : 0;
+    var collaboratorName = getValueById('form3-practice-collaborator') || 'colaborador en capacitacion';
+    var branch = getValueById('form3-practice-branch') || 'Sin capturar';
+    var practiceId = getValueById('form3-practice-id') || 'Sin capturar';
 
     if (!result) {
         return;
@@ -978,11 +1113,18 @@ function renderFeedback(state) {
 
     applyForm3FieldStates(allMetrics);
 
+    var practiceSummary = '<div class="result-header form3-practice-feedback">' +
+        '<p>Gracias, ' + escapeHtml(collaboratorName) + '.</p>' +
+        '<p>Sucursal: ' + escapeHtml(branch) + ' - ID: ' + escapeHtml(practiceId) + '</p>' +
+        '<p>' + escapeHtml(getPerformanceMessage(correctPercent)) + '</p>' +
+        '</div>';
+
     result.innerHTML = [
         '<div class="result-header form3-result-summary">',
         '<h2>Resultado de práctica - Formulario 3</h2>',
         '<p>Resumen de validación total del flujo de cuatro pasos.</p>',
         '</div>',
+        practiceSummary,
         buildResultGrid(totals),
         '<div class="form3-result-tabs" role="tablist">',
         allMetrics.map(function (metrics, index) {
@@ -1049,6 +1191,7 @@ function getStepMetrics(step, state) {
     var controls = Array.prototype.slice.call(panel.querySelectorAll('input:not([type="file"]), select')).filter(function (control) {
         return !control.hasAttribute('data-optional') &&
             !control.hasAttribute('data-form3-step-toggle') &&
+            !hasOptionalSectionAncestor(control, panel) &&
             !control.hidden &&
             !hasHiddenAncestor(control, panel);
     });
@@ -1070,13 +1213,21 @@ function getStepMetrics(step, state) {
 
     panel.querySelectorAll('[data-form3-document]').forEach(function (card) {
         var label = card.dataset.documentLabel;
+        var required = !card.hasAttribute('data-optional-document');
+        var loaded = !!state.documents[card.dataset.form3Document];
         results.push({
             label: label,
-            required: true,
-            valid: !!state.documents[card.dataset.form3Document],
-            filled: !!state.documents[card.dataset.form3Document],
-            message: state.documents[card.dataset.form3Document] ? '' : 'Documento pendiente.'
+            required: required,
+            valid: loaded,
+            filled: loaded,
+            message: loaded ? '' : (required ? 'Documento pendiente.' : 'Documento opcional no cargado.')
         });
+    });
+
+    panel.querySelectorAll('[data-optional-section]').forEach(function (section) {
+        if (!hasHiddenAncestor(section, panel)) {
+            results.push(validateOptionalSection(section, panel));
+        }
     });
 
     if (step === 1) {
@@ -1212,6 +1363,10 @@ function validateControl(control, optionalOverride) {
             fail(true, 'Ingresa entre 2 y 50 caracteres.');
     }
 
+    if (control.readOnly && isAddressCatalogField(control)) {
+        return ok();
+    }
+
     if (value !== value.toUpperCase()) {
         return fail(true, 'Captura este campo en MAYÚSCULAS para que sea correcto.');
     }
@@ -1255,6 +1410,11 @@ function validateRecordTable(type, label, state) {
                 return;
             }
 
+            if (field.type === 'number' && (!/^\d+$/.test(value) || (field.max && Number(value) > field.max))) {
+                results.push(invalidResult(fieldLabel, true, field.max ? 'El porcentaje no puede exceder el 100%.' : 'Ingresa un valor numérico válido.'));
+                return;
+            }
+
             if (field.type === 'select') {
                 results.push(validResult(fieldLabel));
                 return;
@@ -1270,12 +1430,19 @@ function validateRecordTable(type, label, state) {
 
         if (type === 'distributorExperience') {
             ['ticket1', 'ticket2', 'ticket3'].forEach(function (key, ticketIndex) {
-                if (!(record.ticketFiles && record.ticketFiles[key])) {
+                if (!hasRecordFiles(record.ticketFiles && record.ticketFiles[key])) {
                     results.push(invalidResult(prefix + 'Relación y ticket ' + (ticketIndex + 1), false, 'Documento pendiente.'));
                 } else {
                     results.push(validResult(prefix + 'Relación y ticket ' + (ticketIndex + 1)));
                 }
             });
+        }
+        if (type === 'catalogExperience') {
+            if (!hasRecordFiles(record.activityProof)) {
+                results.push(invalidResult(prefix + 'Comprobante de actividad', false, 'Documento pendiente.'));
+            } else {
+                results.push(validResult(prefix + 'Comprobante de actividad'));
+            }
         }
     });
 
@@ -1312,6 +1479,10 @@ function isRecordComplete(type, record) {
             return !!value;
         }
 
+        if (field.type === 'number') {
+            return /^\d+$/.test(value) && (!field.max || Number(value) <= field.max);
+        }
+
         return value === value.toUpperCase();
     });
 
@@ -1321,9 +1492,13 @@ function isRecordComplete(type, record) {
 
     if (type === 'distributorExperience') {
         return !!(record.ticketFiles &&
-            record.ticketFiles.ticket1 &&
-            record.ticketFiles.ticket2 &&
-            record.ticketFiles.ticket3);
+            hasRecordFiles(record.ticketFiles.ticket1) &&
+            hasRecordFiles(record.ticketFiles.ticket2) &&
+            hasRecordFiles(record.ticketFiles.ticket3));
+    }
+
+    if (type === 'catalogExperience') {
+        return hasRecordFiles(record.activityProof);
     }
 
     return true;
@@ -1391,13 +1566,49 @@ function isZeroLike(value) {
     return parseMoney(value) === 0;
 }
 
+function validateOptionalSection(section, panel) {
+    var label = section.dataset.optionalSection || 'Seccion opcional';
+    var controls = Array.prototype.slice.call(section.querySelectorAll('input:not([type="file"]), select')).filter(function (control) {
+        return !control.hidden && !hasHiddenAncestor(control, panel);
+    });
+    var filledControls = controls.filter(function (control) {
+        return String(control.value || '').trim();
+    });
+
+    if (!filledControls.length) {
+        return invalidResult(label, false, 'Opcional incompleto: no se capturo informacion.', '', false);
+    }
+
+    var allValid = controls.every(function (control) {
+        var value = String(control.value || '').trim();
+
+        if (!value) {
+            return false;
+        }
+
+        return validateControl(control, true).valid;
+    });
+
+    return allValid ?
+        validResult(label + ': opcional completo', '', false) :
+        invalidResult(label, true, 'Opcional incompleto: completa todos sus campos con formato valido.', '', false);
+}
+
 function isNumericField(control) {
     var id = control.id || '';
     return id.indexOf('years') >= 0 ||
         id.indexOf('dependents') >= 0 ||
-        id.indexOf('count') >= 0 ||
+        id === 'advance-count' ||
         id.indexOf('percentage') >= 0 ||
         id.indexOf('customers') >= 0;
+}
+
+function isAddressCatalogField(control) {
+    var id = control.id || '';
+    return id.indexOf('municipality') >= 0 ||
+        id.indexOf('city') >= 0 ||
+        id.indexOf('state') >= 0 ||
+        id.indexOf('country') >= 0;
 }
 
 function parseMoney(value) {
@@ -1409,6 +1620,17 @@ function hasHiddenAncestor(control, panel) {
     var node = control.parentElement;
     while (node && node !== panel) {
         if (node.hidden) {
+            return true;
+        }
+        node = node.parentElement;
+    }
+    return false;
+}
+
+function hasOptionalSectionAncestor(control, panel) {
+    var node = control.parentElement;
+    while (node && node !== panel) {
+        if (node.hasAttribute && node.hasAttribute('data-optional-section')) {
             return true;
         }
         node = node.parentElement;
@@ -1453,8 +1675,25 @@ function metricBlock(label, value) {
     return '<div><strong>' + label + '</strong><span>' + value + '</span></div>';
 }
 
+function getPerformanceMessage(percent) {
+    if (percent >= 90) {
+        return 'Excelente.';
+    }
+    if (percent >= 75) {
+        return 'Buen avance.';
+    }
+    if (percent >= 60) {
+        return 'Requiere reforzamiento.';
+    }
+    return 'Se recomienda repetir la practica.';
+}
+
 function buildStepResultPanel(metrics, hidden) {
     var percentage = metrics.total ? Math.round((metrics.correctRequired || 0) / metrics.total * 100) : 0;
+    var correctRequired = (metrics.correct || []).filter(function (item) { return item.required !== false; });
+    var pendingRequired = (metrics.pending || []).filter(function (item) { return item.required !== false; });
+    var optionalComplete = (metrics.correct || []).filter(function (item) { return item.required === false; });
+    var optionalIncomplete = (metrics.pending || []).filter(function (item) { return item.required === false; });
     var note = metrics.step === 1 ?
         '<p class="form3-step-note">En la seccion Perfil transaccional ambos campos select deben ir con la opcion No y los valores en 0</p>' :
         '';
@@ -1470,8 +1709,10 @@ function buildStepResultPanel(metrics, hidden) {
         metricBlock('Campos vacíos', metrics.empty) +
         metricBlock('Porcentaje correcto', percentage + '%') +
         '</div>' +
-        '<div class="result-lists"><div><h3>Campos correctos</h3>' + buildList(metrics.correct, 'Sin campos llenados.') +
-        '</div><div><h3>Campos por revisar</h3>' + buildList(metrics.pending, 'Sin campos pendientes.') + '</div></div>' +
+        '<div class="result-lists"><div><h3>Campos correctos</h3>' + buildList(correctRequired, 'Sin campos llenados.') +
+        '</div><div><h3>Campos por revisar</h3>' + buildList(pendingRequired, 'Sin campos pendientes.') +
+        '</div><div><h3>Opcionales completos</h3>' + buildList(optionalComplete, 'Sin opcionales completos.') +
+        '</div><div><h3>Opcionales incompletos</h3>' + buildList(optionalIncomplete, 'Sin opcionales incompletos.') + '</div></div>' +
         note + '</section>';
 }
 
